@@ -14,16 +14,16 @@ class SMEnemyCube2: SMEnemyCube {
         self.hitpoint = 2
         self.diffence = 0
         self.score = 20
-        self.color = UIColor.redColor()
+        self.color = UIColor.red
         self.colorBlendFactor = 0.2
     }
-    required override init(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func makeEnemy() {
         super.makeEnemy()
         self.physicsBody?.density = 10.0
-        makeEnegy(1)
+        makeEnegy(num: 1)
     }
 }

@@ -16,7 +16,7 @@ class SMEnegyNode: SKSpriteNode {
     init(texture: SKTexture, location: CGPoint,parentnode:SKNode){
         self.startPoint = location
         self.parentnode = parentnode
-        texture.filteringMode = .Nearest
+        texture.filteringMode = .nearest
         let color = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         super.init(texture: texture, color:color, size:texture.size())
         self.position = CGPoint(x:location.x, y:location.y)
@@ -24,14 +24,14 @@ class SMEnegyNode: SKSpriteNode {
         self.alpha = 0.9
         self.zPosition = 20
     }
-    required override init(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     func makeEnegy(rad:CGFloat = 3.0, den:CGFloat = 10.0) {
         //物理シミュレーション設定
         //self.physicsBody = SKPhysicsBody(texture: self.texture!, size: self.texture!.size())
         self.physicsBody = SKPhysicsBody(circleOfRadius: rad)
-        self.physicsBody?.dynamic = true
+        self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.density = den
         
@@ -44,17 +44,17 @@ class SMEnegyNode: SKSpriteNode {
     func contactSword(sword:SMSwordNode) {
         //SMNodeUtil.makeParticleNode(CGPoint(x: self.position.x, y: self.position.y), filename: "MyParticle.sks", node: parentnode)
         if sword.isShot == false {
-            SMNodeUtil.makeParticleNode(CGPoint(x: 0.0, y: 0.0), filename: "item.sks", hide: true, node: self)
-            self.color = UIColor.blueColor()
+            SMNodeUtil.makeParticleNode(position: CGPoint(x: 0.0, y: 0.0), filename: "item.sks", hide: true, node: self)
+            self.color = UIColor.blue
             self.colorBlendFactor = 0.7
-            SMNodeUtil.fadeRemoveNode(self)
+            SMNodeUtil.fadeRemoveNode(removenode: self)
         }
     }
     func shotEnegy(dx: CGFloat, dy: CGFloat) {
         self.physicsBody?.velocity = CGVector.zero
         self.physicsBody?.applyImpulse(CGVector(dx:dx, dy:dy))
         //self.physicsBody?.applyForce(CGVector(dx:0, dy: -50.0))
-        SMNodeUtil.fadeRemoveNode10(self)
+        SMNodeUtil.fadeRemoveNode10(removenode: self)
     }
     func shotEnegyRandom() {
         let randX = arc4random_uniform(100)
@@ -66,13 +66,13 @@ class SMEnegyNode: SKSpriteNode {
         }
         let dx: CGFloat = CGFloat(CGFloat(randX) * 0.035) * CGFloat(minus)
         let dy: CGFloat = CGFloat(CGFloat(randY) * 0.027) * CGFloat(-1)
-        shotEnegy(dx, dy: dy)
+        shotEnegy(dx: dx, dy: dy)
     }
     func shotEnegyPlayer() {
         //プレイヤーに迫って移動してくるようにする
-        let vector = SMNodeUtil.makePlayerVector(self.position, player: player)
+        let vector = SMNodeUtil.makePlayerVector(position: self.position, player: player)
         //self.physicsBody?.velocity = CGVector.zeroVector
         //self.physicsBody?.applyImpulse(CGVector(dx:vector.dx / 100, dy:vector.dy / 500))
-        shotEnegy(vector.dx, dy: vector.dy)
+        shotEnegy(dx: vector.dx, dy: vector.dy)
     }
 }

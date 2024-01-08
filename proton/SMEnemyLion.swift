@@ -30,7 +30,7 @@ class SMEnemyLion: SMEnemyNode {
         self.itemnum = 3
         
     }
-    required override init(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -40,10 +40,10 @@ class SMEnemyLion: SMEnemyNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.restitution = 0.1
         self.physicsBody?.density = 1000.0
-        makeEnegy(3)
+        makeEnegy(num: 3)
         makeEnegy2()
-        let move = SKAction.moveToY(frameHeight - 100, duration: 3.0)
-        self.runAction(move)
+        let move = SKAction.moveTo(y: frameHeight - 100, duration: 3.0)
+        self.run(move)
         
         //バリアを作成
         let guardpos = CGPoint(x:-10, y:-80)

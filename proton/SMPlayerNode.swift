@@ -52,29 +52,29 @@ class SMPlayerNode: SKSpriteNode {
     //アイテムを取得した時の処理
     func contactItem(item: SMItemNode) {
         item.physicsBody?.categoryBitMask = ColliderType.None
-        bgNode.runAction(kakinSound)
+        bgNode.run(kakinSound)
         switch item.type {
         case .COIN:
             totalScore += 100
             scoreLabel.text = "\(totalScore)"
         case .DAIYA:
-            bgNode.runAction(itemgetSound)
-            bgNode.runAction(itemgetSound)
-            bgNode.runAction(itemgetSound)
+            bgNode.run(itemgetSound)
+            bgNode.run(itemgetSound)
+            bgNode.run(itemgetSound)
             totalScore += 1000
             scoreLabel.text = "\(totalScore)"
         case .SWORDNUMUP:
             if self.swordMaxNum < SWORD_NUM_MUX {
-                self.swordMaxNum++
+                self.swordMaxNum += 1
                 self.countUpSword()
                 powerupCutin()
             }
         case .SWORDPOWERUP:
-            self.swordPower++
+            self.swordPower += 1
             powerupCutin()
         case .SWORDCHARGEUP:
             if self.swordCharge < SWORD_CHARGE_MAX {
-                self.swordCharge++
+                self.swordCharge += 1
                 powerupCutin()
             }
         case .SPEEDUP:
@@ -98,15 +98,15 @@ class SMPlayerNode: SKSpriteNode {
             break
         }
         item.removeFromParent()
-        SMNodeUtil.makeParticleNode(CGPoint(x: self.position.x, y: self.position.y + 30), filename: "MyParticle.sks", node: bgNode)
+        SMNodeUtil.makeParticleNode(position: CGPoint(x: self.position.x, y: self.position.y + 30), filename: "MyParticle.sks", node: bgNode)
     }
     
     func powerupCutin() {
         let scene = self.scene as! GameScene
         makeWarpAnim()
-        bgNode.runAction(powerupSound)
-        bgNode.runAction(powerupSound)
-        bgNode.runAction(powerupSound)
+        bgNode.run(powerupSound)
+        bgNode.run(powerupSound)
+        bgNode.run(powerupSound)
         scene.cutin()
     }
     
@@ -122,15 +122,15 @@ class SMPlayerNode: SKSpriteNode {
     }
     //スピードアップの処理
     func speedUp() {
-        self.speedup++
-        let scaleAction = SKAction.scaleBy(1.05, duration: 0.5)
-        hane.runAction(scaleAction)
+        self.speedup += 1
+        let scaleAction = SKAction.scale(by: 1.05, duration: 0.5)
+        hane.run(scaleAction)
     }
     
     //ハート回復アイテムゲット
     func heartUp() {
-        makeHeartIcon(hitpoint)
-        hitpoint++
+        makeHeartIcon(index: hitpoint)
+        hitpoint += 1
         if self.hitpoint >= 2 {
             self.colorBlendFactor = 0
             self.hane.colorBlendFactor = 0
@@ -141,39 +141,39 @@ class SMPlayerNode: SKSpriteNode {
     func damegedEnegy(enegy: SMEnegyNode) {
         enegy.physicsBody?.categoryBitMask = ColliderType.None
         countDownHeart()
-        SMNodeUtil.fadeRemoveNode(enegy)
+        SMNodeUtil.fadeRemoveNode(removenode: enegy)
         
         //bgNode.color = UIColor.yellowColor()
         //self.colorBlendFactor = 0.9
         weak var stage: SMStage? = stageManager.currentStage
         if stage != nil {
-            stage!.background.color = UIColor.redColor()
+            stage!.background.color = UIColor.red
             stage!.background.colorBlendFactor = 0.5
-            let custumAction = SKAction.customActionWithDuration(0.0, actionBlock: { (node: SKNode, elapsedTime: CGFloat) -> Void in
+            let custumAction = SKAction.customAction(withDuration: 0.0, actionBlock: { (node: SKNode, elapsedTime: CGFloat) -> Void in
                 weak var stagetmp: SMStage? = stageManager.currentStage
                 if stagetmp != nil {
                     stagetmp!.background.colorBlendFactor = 0.0
                 }
             })
-            let waitAction = SKAction.waitForDuration(0.5)
-            bgNode.runAction(SKAction.sequence([waitAction,custumAction]))
+            let waitAction = SKAction.wait(forDuration: 0.5)
+            bgNode.run(SKAction.sequence([waitAction,custumAction]))
         }
             
         //やられた効果音再生
-        bgNode.runAction(explodeSound)
-        bgNode.runAction(explodeSound)
+        bgNode.run(explodeSound)
+        bgNode.run(explodeSound)
         
         //やられたアニメーション作成
-        SMNodeUtil.makeParticleNode(self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
-        SMNodeUtil.makeParticleNode(self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
-        SMNodeUtil.makeParticleNode(self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
-        bgNode.runAction(hawawaSound)
-        bgNode.runAction(hawawaSound)
-        bgNode.runAction(hawawaSound)
+        SMNodeUtil.makeParticleNode(position: self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
+        SMNodeUtil.makeParticleNode(position: self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
+        SMNodeUtil.makeParticleNode(position: self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
+        bgNode.run(hawawaSound)
+        bgNode.run(hawawaSound)
+        bgNode.run(hawawaSound)
         if self.hitpoint <= 2 {
-            self.color = UIColor.redColor()
+            self.color = UIColor.red
             self.colorBlendFactor = 0.5
-            self.hane.color = UIColor.redColor()
+            self.hane.color = UIColor.red
             self.hane.colorBlendFactor = 0.3
         }
     }
@@ -184,18 +184,18 @@ class SMPlayerNode: SKSpriteNode {
         statusNode.removeFromParent()
         
         //やられた効果音再生
-        bgNode.runAction(explodeSound)
-        bgNode.runAction(explodeSound)
-        bgNode.runAction(explodeSound)
+        bgNode.run(explodeSound)
+        bgNode.run(explodeSound)
+        bgNode.run(explodeSound)
         
         //やられたアニメーション作成
-        SMNodeUtil.makeParticleNode(self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
-        SMNodeUtil.makeParticleNode(self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
-        SMNodeUtil.makeParticleNode(self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
-        SMNodeUtil.makeParticleNode(self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
+        SMNodeUtil.makeParticleNode(position: self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
+        SMNodeUtil.makeParticleNode(position: self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
+        SMNodeUtil.makeParticleNode(position: self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
+        SMNodeUtil.makeParticleNode(position: self.position, filename: "deadParticle.sks", hide: true, node: bgNode)
         
         //プレイヤー削除
-        SMNodeUtil.fadeRemoveNode(self)
+        SMNodeUtil.fadeRemoveNode(removenode: self)
     }
     
     //プレイヤー作成
@@ -205,8 +205,8 @@ class SMPlayerNode: SKSpriteNode {
             self.swordMaxNum = 10
             self.swordNum = 10
         } else {
-            let ud = NSUserDefaults.standardUserDefaults()
-            let swords = ud.integerForKey(GameViewController.SWORDS_UDKEY)
+            let ud = UserDefaults.standard
+            let swords = ud.integer(forKey: GameViewController.SWORDS_UDKEY)
             self.swordMaxNum = swords
             self.swordNum = swords
         }
@@ -225,7 +225,7 @@ class SMPlayerNode: SKSpriteNode {
             self.physicsBody = SKPhysicsBody(rectangleOfSize: texture!.size())
         }*/
         self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-        self.physicsBody?.dynamic = false
+        self.physicsBody?.isDynamic = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = ColliderType.Player
         //self.physicsBody?.collisionBitMask = ColliderType.Enemy | ColliderType.Enegy
@@ -235,11 +235,11 @@ class SMPlayerNode: SKSpriteNode {
         self.zPosition = 2
         
         //画面下から登場
-        playerStart(textures)
+        playerStart(textures: textures)
         
         //パーティクル作成
         let particlePosition = CGPoint(x: 0, y: 25)
-        SMNodeUtil.makeParticleNode(particlePosition, filename:"playerParticle.sks", hide:false, node:self)
+        SMNodeUtil.makeParticleNode(position: particlePosition, filename:"playerParticle.sks", hide:false, node:self)
         
         //アニメーション作成
         makePlayerAnimation()
@@ -256,33 +256,33 @@ class SMPlayerNode: SKSpriteNode {
         self.removeAllActions()
         
         //パラパラアニメーション
-        let paraAction = SKAction.animateWithTextures(textures, timePerFrame: 0.2)
-        let repeatParaAction = SKAction.repeatActionForever(paraAction)
-        self.runAction(repeatParaAction)
+        let paraAction = SKAction.animate(with: textures, timePerFrame: 0.2)
+        let repeatParaAction = SKAction.repeatForever(paraAction)
+        self.run(repeatParaAction)
         
         //画面下から登場
-        let resetAction = SKAction.moveToY(0, duration: 0)
-        let playerAction = SKAction.moveToY(50, duration: 2)
-        let repeatAction = SKAction.repeatActionForever(SKAction.sequence([SKAction.moveToY(45, duration: 2),SKAction.moveToY(55, duration: 2)]))
-        self.runAction(SKAction.sequence([resetAction, playerAction, repeatAction]))
+        let resetAction = SKAction.moveTo(y: 0, duration: 0)
+        let playerAction = SKAction.moveTo(y: 50, duration: 2)
+        let repeatAction = SKAction.repeatForever(SKAction.sequence([SKAction.moveTo(y: 45, duration: 2),SKAction.moveTo(y: 55, duration: 2)]))
+        self.run(SKAction.sequence([resetAction, playerAction, repeatAction]))
         
-        let scaleAction1 = SKAction.scaleTo(1.1, duration: 2)
-        let scaleAction2 = SKAction.scaleTo(1.0, duration: 2)
-        let scaleAction3 = SKAction.scaleTo(0.9, duration: 2)
-        let scaleRepeat = SKAction.repeatActionForever(SKAction.sequence([scaleAction1,scaleAction2,scaleAction3]))
-        self.runAction(scaleRepeat)
+        let scaleAction1 = SKAction.scale(to: 1.1, duration: 2)
+        let scaleAction2 = SKAction.scale(to: 1.0, duration: 2)
+        let scaleAction3 = SKAction.scale(to: 0.9, duration: 2)
+        let scaleRepeat = SKAction.repeatForever(SKAction.sequence([scaleAction1,scaleAction2,scaleAction3]))
+        self.run(scaleRepeat)
     }
     
     //ハートのアイコンを作成
     func makeHeartIcon() {
         for i in 0..<self.hitpoint {
-            makeHeartIcon(i)
+            makeHeartIcon(index: i)
         }
     }
     func makeHeartIcon(index: Int) {
         let icon = SKSpriteNode(texture: heartIconTexture)
         let width:CGFloat! = icon.texture?.size().width
-        icon.blendMode = SKBlendMode.Add
+        icon.blendMode = SKBlendMode.add
         icon.alpha = 0.9
         icon.position = CGPoint(x: width * CGFloat(index), y:CGFloat(20.0))
         heartIcons.append(icon)
@@ -290,21 +290,21 @@ class SMPlayerNode: SKSpriteNode {
     }
     //ハートをカウントダウン
     func countDownHeart() {
-        hitpoint--
+        hitpoint -= 1
         heartIcons[hitpoint].removeFromParent()
-        heartIcons.removeAtIndex(hitpoint)
+        heartIcons.remove(at: hitpoint)
     }
     
     //剣のアイコンを作成
     func makeSwordIcon() {
         for i in 0..<swordMaxNum {
-            makeSwordIcon(i)
+            makeSwordIcon(index: i)
         }
     }
     func makeSwordIcon(index: Int) {
         let icon = SKSpriteNode(texture: swordIconTexture)
         let width:CGFloat! = icon.texture?.size().width
-        icon.blendMode = SKBlendMode.Add
+        icon.blendMode = SKBlendMode.add
         icon.alpha = 0.9
         icon.position = CGPoint(x: width * CGFloat(index), y:CGFloat(0.0))
         swordIcons.append(icon)
@@ -313,25 +313,25 @@ class SMPlayerNode: SKSpriteNode {
     
     //剣をカウントダウン
     func countDownSword() {
-        swordNum--
+        swordNum -= 1
         swordIcons[swordNum].removeFromParent()
-        swordIcons.removeAtIndex(swordNum)
+        swordIcons.remove(at: swordNum)
     }
     
     //剣をカウントアップ
     func countUpSword() {
-        makeSwordIcon(swordNum)
-        swordNum++
+        makeSwordIcon(index: swordNum)
+        swordNum += 1
     }
     
     //プレイヤーのアニメーションを作成する
     func makePlayerAnimation() {
         //羽のアニメーションを切り出す
-        haneAim = SMAnimationUtil.explodeAnime("wing", xFrame: 5, yFrame: 6)
+        haneAim = SMAnimationUtil.explodeAnime(imageName: "wing", xFrame: 5, yFrame: 6)
         haneAim1 = [SKTexture](haneAim[3...6])
         haneAim2 = [SKTexture](haneAim[7...22])
         //ワープのアニメーションを切り出す
-        warpAim = SMAnimationUtil.explodeAnime("warp", xFrame: 2, yFrame: 13)
+        warpAim = SMAnimationUtil.explodeAnime(imageName: "warp", xFrame: 2, yFrame: 13)
         warpAim2 = [SKTexture](warpAim[0...14])
         
         //羽のアニメーションを作成
@@ -348,12 +348,12 @@ class SMPlayerNode: SKSpriteNode {
         
         self.addChild(hane!)
         makeHaneAnim()
-        let scaleHaneAction = SKAction.scaleTo(0.5, duration: 3.0)
-        hane.runAction(scaleHaneAction)
+        let scaleHaneAction = SKAction.scale(to: 0.5, duration: 3.0)
+        hane.run(scaleHaneAction)
         
         //ワープのアニメーションを作成
         warp = SKSpriteNode(texture: warpAim[0], size: warpAim[0].size())
-        warp.blendMode = SKBlendMode.Add
+        warp.blendMode = SKBlendMode.add
         warp.alpha = 0.8
         makeWarpAnim()
     }
@@ -361,19 +361,19 @@ class SMPlayerNode: SKSpriteNode {
     func makeHaneAnim() {
         hane.removeAllActions()
         
-        let haneAnimAction = SKAction.animateWithTextures(haneAim, timePerFrame: 0.1, resize:false, restore:true)
-        let haneAnimAction1 = SKAction.animateWithTextures(haneAim1, timePerFrame: 0.1, resize:false, restore:true)
-        let haneAnimAction2 = SKAction.animateWithTextures(haneAim2, timePerFrame: 0.1, resize:false, restore:true)
-        let repeatHaneAction = SKAction.repeatActionForever(haneAnimAction2)
-        hane.runAction(SKAction.sequence([haneAnimAction,haneAnimAction1, repeatHaneAction]))
+        let haneAnimAction = SKAction.animate(with: haneAim, timePerFrame: 0.1, resize:false, restore:true)
+        let haneAnimAction1 = SKAction.animate(with: haneAim1, timePerFrame: 0.1, resize:false, restore:true)
+        let haneAnimAction2 = SKAction.animate(with: haneAim2, timePerFrame: 0.1, resize:false, restore:true)
+        let repeatHaneAction = SKAction.repeatForever(haneAnimAction2)
+        hane.run(SKAction.sequence([haneAnimAction,haneAnimAction1, repeatHaneAction]))
     }
     
     func makeWarpAnim() {
         warp.removeFromParent()
         self.addChild(warp!)
         warp.removeAllActions()
-        let warpAnimAction = SKAction.animateWithTextures(warpAim2, timePerFrame: 0.1, resize:false, restore:true)
+        let warpAnimAction = SKAction.animate(with: warpAim2, timePerFrame: 0.1, resize:false, restore:true)
         let warpRemoveAction = SKAction.removeFromParent()
-        warp.runAction(SKAction.sequence([warpAnimAction,warpRemoveAction]))
+        warp.run(SKAction.sequence([warpAnimAction,warpRemoveAction]))
     }
 }

@@ -28,7 +28,7 @@ class SMEnemyBoss4: SMEnemyNode {
         self.score = 100000
         self.itemnum = 40
     }
-    required override init(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -43,17 +43,17 @@ class SMEnemyBoss4: SMEnemyNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.restitution = 0.1
         self.physicsBody?.density = 1000.0
-        makeEnegy(50)
-        makeEnegy2(1.0)
-        let move = SKAction.moveToY(frameHeight - 100, duration: 3.0)
-        self.runAction(move)
+        makeEnegy(num: 50)
+        makeEnegy2(interval: 1.0)
+        let move = SKAction.moveTo(y: frameHeight - 100, duration: 3.0)
+        self.run(move)
         self.moveXToPlayer()
         //バリアを作成
-        var guardpos = CGPoint(x:-10, y:-80)
+        let guardpos = CGPoint(x:-10, y:-80)
         `guard` = SMGuardNode(texture: guardTexture, location: guardpos, parentnode: self)
         `guard`.makeGuard()
         `guard`.hitpoint = 200
         
-        attackPlayer(20.0)
+        attackPlayer(duration: 20.0)
     }
 }

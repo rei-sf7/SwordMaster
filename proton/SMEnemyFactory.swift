@@ -22,7 +22,7 @@ class SMEnemyFactory {
     var boss3Texture = SKTexture(imageNamed: "boss3")
     var boss4Texture = SKTexture(imageNamed: "boss4")
     
-    func create(type:EnemyType) -> SMEnemyNode? {
+    func create(type:EnemyType?) -> SMEnemyNode? {
         var enemy:SMEnemyNode? = nil
         switch type {
         case .CUBE:

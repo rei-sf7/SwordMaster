@@ -51,7 +51,7 @@ var hitAim: [SKTexture]!
 
 //ガードアニメーション
 var guardAim: [SKTexture]!
-var guardAnimAction = SKAction.animateWithTextures(guardAim, timePerFrame: 0.1, resize:false, restore:true)
+var guardAnimAction = SKAction.animate(with: guardAim, timePerFrame: 0.1, resize:false, restore:true)
 
 //切るアニメーション
 var killAim: [SKTexture]!
@@ -183,17 +183,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         cutin1.alpha = 0.0
         cutin1.zPosition = 10
         self.addChild(cutin1)
-        let resetScale = SKAction.scaleTo(1.2, duration: 0.0)
-        let moveAction1 = SKAction.moveToX(self.frame.width / 2, duration: 0.5)
-        let scaleAction = SKAction.scaleBy(1.5, duration: 0.5)
-        let waitAction = SKAction.waitForDuration(0.5)
-        let moveAction2 = SKAction.moveToX(0.0, duration: 0.5)
-        cutin1.runAction(SKAction.sequence([resetScale, moveAction1, scaleAction, waitAction, moveAction2]))
-        let fadeIn = SKAction.fadeInWithDuration(0.5)
-        let fadeOut = SKAction.fadeOutWithDuration(0.5)
+        let resetScale = SKAction.scale(to: 1.2, duration: 0.0)
+        let moveAction1 = SKAction.moveTo(x: self.frame.width / 2, duration: 0.5)
+        let scaleAction = SKAction.scale(by: 1.5, duration: 0.5)
+        let waitAction = SKAction.wait(forDuration: 0.5)
+        let moveAction2 = SKAction.moveTo(x: 0.0, duration: 0.5)
+        cutin1.run(SKAction.sequence([resetScale, moveAction1, scaleAction, waitAction, moveAction2]))
+        let fadeIn = SKAction.fadeIn(withDuration: 0.5)
+        let fadeOut = SKAction.fadeOut(withDuration: 0.5)
         let removeAction = SKAction.removeFromParent()
-        cutin1.runAction(SKAction.sequence([fadeIn,waitAction,fadeOut,removeAction]))
-        SMNodeUtil.makeParticleNode(CGPoint(x: 0.0, y: 0.0), filename: "cutinParticle.sks", hide: true, node: cutin1)
+        cutin1.run(SKAction.sequence([fadeIn,waitAction,fadeOut,removeAction]))
+        SMNodeUtil.makeParticleNode(position: CGPoint(x: 0.0, y: 0.0), filename: "cutinParticle.sks", hide: true, node: cutin1)
     }
     
     //操作説明を表示する
@@ -205,11 +205,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tap.alpha = 0.0
         self.addChild(tap)
         
-        let waitAction = SKAction.waitForDuration(2.0)
-        let fadeInAction = SKAction.fadeInWithDuration(0.5)
-        let fadeOutAction = SKAction.fadeOutWithDuration(0.5)
-        let scale1 = SKAction.scaleTo(1.2, duration: 0.0)
-        let scale2 = SKAction.scaleTo(1.0, duration: 0.5)
+        let waitAction = SKAction.wait(forDuration: 2.0)
+        let fadeInAction = SKAction.fadeIn(withDuration: 0.5)
+        let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
+        let scale1 = SKAction.scale(to: 1.2, duration: 0.0)
+        let scale2 = SKAction.scale(to: 1.0, duration: 0.5)
         let tapAction = SKAction.sequence([waitAction, fadeInAction, scale1, scale2, scale1, scale2, scale1, scale2, fadeOutAction])
         
         //ラベルの表示
@@ -221,7 +221,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(helpLabel)
         helpLabel.position = CGPoint(x: (self.frame.size.width/2), y: self.frame.size.height/2)
         let tapLabelAction = SKAction.sequence([waitAction, fadeInAction, waitAction, fadeOutAction])
-        helpLabel.runAction(SKAction.sequence([tapLabelAction,SKAction.removeFromParent()]))
+        helpLabel.run(SKAction.sequence([tapLabelAction,SKAction.removeFromParent()]))
         
         helpLabel_2.text = "撃つと左下の剣ゲージが減るので注意!"
         helpLabel_2.fontSize = 18
@@ -230,48 +230,48 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         helpLabel_2.alpha = 0.0
         self.addChild(helpLabel_2)
         helpLabel_2.position = CGPoint(x: (self.frame.size.width/2), y: self.frame.size.height/2 - 50)
-        helpLabel_2.runAction(SKAction.sequence([tapLabelAction,SKAction.removeFromParent()]))
+        helpLabel_2.run(SKAction.sequence([tapLabelAction,SKAction.removeFromParent()]))
         
         //タップ領域の説明
         if #available(iOS 8.0, *) {
-            let shape:SKShapeNode = SKShapeNode(rectOfSize: CGSize(width: self.frame.width, height: 300))
-            shape.fillColor = UIColor.whiteColor()
+            let shape:SKShapeNode = SKShapeNode(rectOf: CGSize(width: self.frame.width, height: 300))
+            shape.fillColor = UIColor.white
             shape.alpha = 0.2
             self.addChild(shape)
             shape.position = CGPoint(x:self.frame.width/2, y: 150)
-            let scale0 = SKAction.scaleTo(0.0, duration: 0.0)
-            let scale3 = SKAction.scaleTo(1.0, duration: 1.0)
+            let scale0 = SKAction.scale(to: 0.0, duration: 0.0)
+            let scale3 = SKAction.scale(to: 1.0, duration: 1.0)
             let shapeAction = SKAction.sequence([scale0, scale3])
-            let repeatShape = SKAction.repeatAction(shapeAction,count:7)
-            shape.runAction(SKAction.sequence([scale0, waitAction, repeatShape, SKAction.removeFromParent()]))
+            let repeatShape = SKAction.repeat(shapeAction,count:7)
+            shape.run(SKAction.sequence([scale0, waitAction, repeatShape, SKAction.removeFromParent()]))
         } else {
             // Fallback on earlier versions
         }
         
         //移動の操作説明
-        moveAim = SMAnimationUtil.explodeAnime("moveAnim", xFrame: 2, yFrame: 1)
-        let moveAnimAction = SKAction.animateWithTextures(moveAim, timePerFrame: 1.0)
-        let repeatMove = SKAction.repeatAction(moveAnimAction, count: 3)
+        moveAim = SMAnimationUtil.explodeAnime(imageName: "moveAnim", xFrame: 2, yFrame: 1)
+        let moveAnimAction = SKAction.animate(with: moveAim, timePerFrame: 1.0)
+        let repeatMove = SKAction.repeat(moveAnimAction, count: 3)
         let moveAction = SKAction.sequence([waitAction,fadeInAction, repeatMove, fadeOutAction])
         
         //長押しタップの説明
-        tapAim = SMAnimationUtil.explodeAnime("tap", xFrame: 1, yFrame: 1)
-        let lscale2 = SKAction.scaleTo(1.5, duration: 1.5)
-        let ltapAnimAction = SKAction.animateWithTextures(tapAim, timePerFrame: 0.1)
+        tapAim = SMAnimationUtil.explodeAnime(imageName: "tap", xFrame: 1, yFrame: 1)
+        let lscale2 = SKAction.scale(to: 1.5, duration: 1.5)
+        let ltapAnimAction = SKAction.animate(with: tapAim, timePerFrame: 0.1)
         let ltapAction = SKAction.sequence([waitAction, ltapAnimAction, fadeInAction, scale1, lscale2, scale1, lscale2, scale1, lscale2, fadeOutAction])
         
         //スワイプの説明
-        swipeAim = SMAnimationUtil.explodeAnime("swipe", xFrame: 2, yFrame: 1)
-        let swipeAnimAction = SKAction.animateWithTextures(swipeAim, timePerFrame: 1.0)
-        let repeatSwipe = SKAction.repeatAction(swipeAnimAction, count: 3)
+        swipeAim = SMAnimationUtil.explodeAnime(imageName: "swipe", xFrame: 2, yFrame: 1)
+        let swipeAnimAction = SKAction.animate(with: swipeAim, timePerFrame: 1.0)
+        let repeatSwipe = SKAction.repeat(swipeAnimAction, count: 3)
         let swipeAction = SKAction.sequence([waitAction,scale1,fadeInAction, repeatSwipe, fadeOutAction])
         
         
         let allAction = SKAction.sequence([tapAction,moveAction,ltapAction,swipeAction])
-        tap.runAction(allAction)
+        tap.run(allAction)
         
         //移動のラベルの説明
-        let waitAction7 = SKAction.waitForDuration(7.0)
+        let waitAction7 = SKAction.wait(forDuration: 7.0)
         helpLabel2.text = "画面を傾けると自機が左右に移動します"
         helpLabel2.fontSize = 18
         helpLabel2.fontColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.9)
@@ -279,7 +279,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         helpLabel2.alpha = 0.0
         self.addChild(helpLabel2)
         helpLabel2.position = CGPoint(x: (self.frame.size.width/2), y: self.frame.size.height/2)
-        helpLabel2.runAction(SKAction.sequence([waitAction7, tapLabelAction,SKAction.removeFromParent()]))
+        helpLabel2.run(SKAction.sequence([waitAction7, tapLabelAction,SKAction.removeFromParent()]))
         
         //長押しタップのラベル説明
         helpLabel3.text = "長押しタップでタメ撃ちします"
@@ -289,7 +289,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         helpLabel3.alpha = 0.0
         self.addChild(helpLabel3)
         helpLabel3.position = CGPoint(x: (self.frame.size.width/2), y: self.frame.size.height/2)
-        helpLabel3.runAction(SKAction.sequence([waitAction7, waitAction7,tapLabelAction,SKAction.removeFromParent()]))
+        helpLabel3.run(SKAction.sequence([waitAction7, waitAction7,tapLabelAction,SKAction.removeFromParent()]))
         
         //スワイプのラベル説明
         helpLabel4.text = "スワイプで剣の発射角度が変わります"
@@ -299,11 +299,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         helpLabel4.alpha = 0.0
         self.addChild(helpLabel4)
         helpLabel4.position = CGPoint(x: (self.frame.size.width/2), y: self.frame.size.height/2)
-        helpLabel4.runAction(SKAction.sequence([waitAction7, waitAction7,waitAction7,tapLabelAction,SKAction.removeFromParent()]))
+        helpLabel4.run(SKAction.sequence([waitAction7, waitAction7,waitAction7,tapLabelAction,SKAction.removeFromParent()]))
     }
     
     //画面の初期化処理
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         /* Setup your scene here */
         
         //self.anchorPoint = CGPointMake(0.5, 0.5)
@@ -370,7 +370,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         comboLabel.fontSize = 36
         comboLabel.alpha = 0.0
         comboLabel.fontColor = UIColor(red: 1.0, green: 0.7, blue: 0.5, alpha: 1.0)
-        comboLabel.blendMode = SKBlendMode.Add
+        comboLabel.blendMode = SKBlendMode.add
         comboLabel.zPosition = 1000
         self.addChild(comboLabel)
         comboLabel.position = CGPoint(x: self.frame.size.width - 150, y: self.frame.size.height - 250)
@@ -394,7 +394,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //プレイヤーを作成
         player = SMPlayerNode(texture: playerTexture)
-        player.makePlayer(self,textures:[playerTexture,playerTexture2])
+        player.makePlayer(node: self,textures:[playerTexture,playerTexture2])
         
         //ステータス
         statusNode.zPosition = 1000
@@ -402,10 +402,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(statusNode)
         
         //hitのアニメーションを切り出す
-        hitAim = SMAnimationUtil.explodeAnime("hiteffect", xFrame: 5, yFrame: 6)
-        guardAim = SMAnimationUtil.explodeAnime("guard", xFrame: 5, yFrame: 2)
+        hitAim = SMAnimationUtil.explodeAnime(imageName: "hiteffect", xFrame: 5, yFrame: 6)
+        guardAim = SMAnimationUtil.explodeAnime(imageName: "guard", xFrame: 5, yFrame: 2)
         
-        killAim = SMAnimationUtil.explodeAnime("kill", xFrame: 1, yFrame: 10)
+        killAim = SMAnimationUtil.explodeAnime(imageName: "kill", xFrame: 1, yFrame: 10)
         
         //モーションセンサーを初期化する
         motionInit()
@@ -414,15 +414,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         stageManager.makeStage()
         
         cutin()
-        let waitAction = SKAction.waitForDuration(0.5)
-        bgNode.runAction(SKAction.sequence([waitAction,ganbarimasuSound]))
+        let waitAction = SKAction.wait(forDuration: 0.5)
+        bgNode.run(SKAction.sequence([waitAction,ganbarimasuSound]))
         //self.runAction(SKAction.sequence([waitAction,ganbarimasuSound]))
         //self.runAction(SKAction.sequence([waitAction,ganbarimasuSound]))
         
         killAimNode = SKSpriteNode(texture: killAim[0])
         killAimNode.zPosition = 100
         killAimNode.position = CGPoint(x:self.frame.width/2, y:self.frame.height/2 + 200)
-        killAimNode.blendMode = SKBlendMode.Add
+        killAimNode.blendMode = SKBlendMode.add
         killAimNode.alpha = 0.0
         self.addChild(killAimNode)
         
@@ -431,14 +431,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //カメラの移動処理
     override func didSimulatePhysics(){
-        let camera:SKNode = self.childNodeWithName("//camera")!
+        let camera:SKNode = self.childNode(withName: "//camera")!
         camera.position = CGPointMake(player.position.x - self.frame.width/2, camera.position.y)
-        self.centerOnNode(camera)
+        self.centerOnNode(node: camera)
     }
     func centerOnNode(node:SKNode) {
         if let scene:SKScene = node.scene
         {
-            let cameraPositionInScene:CGPoint = scene.convertPoint(node.position, fromNode: node.parent!)
+            let cameraPositionInScene:CGPoint = scene.convert(node.position, from: node.parent!)
             node.parent!.position = CGPointMake(node.parent!.position.x - cameraPositionInScene.x,                                       node.parent!.position.y - cameraPositionInScene.y);
         }
     }
@@ -453,7 +453,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //ハンドラを設定する
         let accelerometerHandler: CMAccelerometerHandler = {
-            (data:CMAccelerometerData?, error:NSError?) -> Void in
+            (data: CMAccelerometerData?, error: Error?) -> Void in
             
             //ログにx,y,zの加速度を表示する
             //println("x:\(data.acceleration.x),y:\(data.acceleration.y),z:\(data.acceleration.z)")
@@ -470,7 +470,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let speed: CGFloat = 1.0 + (0.1 * CGFloat(player.speedup))
             if player.position.x >= 0 && player.position.x <= self.frame.width {
                 positionx = CGFloat(CGFloat(data!.acceleration.x) * CGFloat(20.0) * speed)
-                moveAction = SKAction.moveByX(positionx, y:0, duration: 0.1)
+                moveAction = SKAction.moveBy(x: positionx, y:0, duration: 0.1)
             } else {
                 //画面端の場合はそれ以上進めないようにする
                 if player.position.x <= 0 {
@@ -478,22 +478,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 } else if player.position.x >= self.frame.width {
                     tmpx = self.frame.width - 10
                 }
-                moveAction = SKAction.moveToX(tmpx, duration: 0.1)
+                moveAction = SKAction.moveTo(x: tmpx, duration: 0.1)
             }
-            player.runAction(moveAction)
+            player.run(moveAction)
             
             //自機を傾ける
-            let angle: CGFloat = CGFloat(positionx * -1) / CGFloat(180.0) * CGFloat(M_PI) ;
+            let angle: CGFloat = CGFloat(positionx * -1) / CGFloat(180.0) * CGFloat(Double.pi)
             //回転のアニメーション
-            let rotateAction = SKAction.rotateToAngle(angle, duration: 0.1)
-            player.runAction(SKAction.sequence([rotateAction]))
+            let rotateAction = SKAction.rotate(toAngle: angle, duration: 0.1)
+            player.run(SKAction.sequence([rotateAction]))
         }
         
-        let que = NSOperationQueue.currentQueue()
+        let que = OperationQueue.current
         
         //センサー取得開始
-        motionManager.startAccelerometerUpdatesToQueue(que!,
-        withHandler: accelerometerHandler)
+        motionManager.startAccelerometerUpdates(to: que!, withHandler: accelerometerHandler)
     }
     
     // Twitter/Facebookボタンがタップされたとき
@@ -504,110 +503,118 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         message = "score:" + String(totalScore) + " #SMYuusuke"
         
         // userinfoに情報(socialの種類とmessage)を格納
-        let userInfo = ["social": social.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!,"message": message.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!]
+        let userInfo: [AnyHashable : Any] = [
+            "social": social.data(using: .utf8)!,
+            "message": message.data(using: .utf8)!
+        ]
         
         // userInfoも含めて、"socialShare"という名称の通知をここで飛ばす
-        NSNotificationCenter.defaultCenter().postNotificationName("socialShare", object: nil, userInfo: userInfo)
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "socialShare"), object: nil, userInfo: userInfo)
+
     }
     
     //タッチした時に呼び出される
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         /* Called when a touch begins */
         if gameoverflg {
             for touch: AnyObject in touches {
-                let touchPoint = touch.locationInNode(self)
-                let node: SKNode! =  self.nodeAtPoint(touchPoint)
+                let touchPoint = touch.location(in: self)
+                let node: SKNode! =  self.atPoint(touchPoint)
                 if let tmpnode = node {
                     if tmpnode.name == "returnLabel" {
                         //ゲームオーバの場合リスタート処理
                         restart()
                         return
                     }
-                    let location = touch.locationInNode(self)
-                    touchButtonName = nodeAtPoint(location).name
+                    let location = touch.location(in: self)
+                    touchButtonName = self.atPoint(location).name
                     if (touchButtonName == "twitter_button") {
-                        socialButtonTapped("twitter")
+                        socialButtonTapped(social: "twitter")
                     } else if (touchButtonName == "facebook_button") {
-                        socialButtonTapped("facebook")
+                        socialButtonTapped(social: "facebook")
                     }
                 }
             }
             return
         }
+        
         //すでにタッチが開始されているなら何もしない
-        if let tmp = touchStartPoint {
+//        if let tmp = touchStartPoint {
+//            return
+//        }
+        if touchStartPoint != nil {
             return
         }
+        
         for touch: AnyObject in touches {
-            let touchPoint = touch.locationInNode(self)
+            let touchPoint = touch.location(in: self)
             if touchPoint.y > 300 {
                 continue
             }
             if player.swordNum <= 0 {
                 //魔法陣が開いてすぐ閉じる演出
                 let randtype = randomSwordType()
-                let tmpsword = swordFactory.create(randtype, position: touchPoint, startPoint:touchPoint)
-                tmpsword?.circle.color = UIColor.redColor()
+                let tmpsword = swordFactory.create(type: randtype, position: touchPoint, startPoint:touchPoint)
+                tmpsword?.circle.color = UIColor.red
                 tmpsword?.circle.colorBlendFactor = 0.7
-                tmpsword!.makeCircle(touchPoint)
+                tmpsword!.makeCircle(position: touchPoint)
                 tmpsword!.removeCircle()
-                bgNode.runAction(hawawaSound)
-                bgNode.runAction(hawawaSound)
-                bgNode.runAction(hawawaSound)
+                bgNode.run(hawawaSound)
+                bgNode.run(hawawaSound)
+                bgNode.run(hawawaSound)
                 return
             }
             player.countDownSword()
             touchStartPoint = touchPoint
             //剣を作成する
             let randtype = randomSwordType()
-            sword = swordFactory.create(randtype, position: touchStartPoint, startPoint: touchStartPoint)
-            sword.makeSword(player.swordPower, charge: player.swordCharge)
+            sword = swordFactory.create(type: randtype, position: touchStartPoint, startPoint: touchStartPoint)
+            sword.makeSword(attack: player.swordPower, charge: player.swordCharge)
             
             //オプションの剣の作成を行う
-            let waitAction = SKAction.waitForDuration(0.5)
+            let waitAction = SKAction.wait(forDuration: 0.5)
             weak var tmpself = self
-            let custumAction = SKAction.customActionWithDuration(0.0, actionBlock: { (node: SKNode, elapsedTime: CGFloat) -> Void in
+            let custumAction = SKAction.customAction(withDuration: 0.0, actionBlock: { (node: SKNode, elapsedTime: CGFloat) -> Void in
                 if player.swordNum <= 0 || tmpself!.sword == nil {
                     return
                 }
                 player.countDownSword()
                 if tmpself!.sword.count < 4 {
-                    bgNode.runAction(magicSound)
+                    bgNode.run(magicSound)
                 }
                 
-                let scaleAction = SKAction.scaleBy(1.05, duration: 1.0)
+                let scaleAction = SKAction.scale(by: 1.05, duration: 1.0)
                 //剣の攻撃力を上げる
-                tmpself!.sword.attack++
-                tmpself!.sword.count++
-                tmpself!.sword.hitpoint++
+                tmpself!.sword.attack += 1
+                tmpself!.sword.count += 1
+                tmpself!.sword.hitpoint += 1
                 for oSword: SMSwordNode in tmpself!.optionSwords {
-                    oSword.attack++
-                    oSword.hitpoint++
-                    oSword.count++
+                    oSword.attack += 1
+                    oSword.hitpoint += 1
+                    oSword.count += 1
                     if oSword.count == 2 {
-                        oSword.circle.color = UIColor.blueColor()
+                        oSword.circle.color = UIColor.blue
                         oSword.circle.colorBlendFactor = 0.5
                         
                         //剣にパーティクルを付ける
-                        SMNodeUtil.makeParticleNode(CGPoint(x:0,y:80), filename: "tameParticle.sks", hide: false, node: oSword)
+                        SMNodeUtil.makeParticleNode(position: CGPoint(x:0,y:80), filename: "tameParticle.sks", hide: false, node: oSword)
                     }
-                    oSword.runAction(scaleAction)
+                    oSword.run(scaleAction)
                 }
                 
                 if tmpself!.sword.count == 2 {
-                    tmpself!.sword.circle.color = UIColor.blueColor()
+                    tmpself!.sword.circle.color = UIColor.blue
                     tmpself!.sword.circle.colorBlendFactor = 0.5
                     
                     //剣にパーティクルを付ける
-                    SMNodeUtil.makeParticleNode(CGPoint(x:0,y:80), filename: "tameParticle.sks", hide: false, node: tmpself!.sword)
+                    SMNodeUtil.makeParticleNode(position: CGPoint(x:0,y:80), filename: "tameParticle.sks", hide: false, node: tmpself!.sword)
                     
                     //剣に光の演出を付ける
                     if #available(iOS 8.0, *) {
                         let light:SKLightNode = SKLightNode()
                         light.categoryBitMask = 1
                         light.falloff = 1
-                        light.ambientColor = UIColor.whiteColor()
+                        light.ambientColor = UIColor.white
                         light.lightColor = UIColor(red: 1.0, green: 0.9, blue: 0.9, alpha: 0.9)
                         light.shadowColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.3)
                         tmpself!.sword.addChild(light)
@@ -615,7 +622,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         // Fallback on earlier versions
                     }
                 }
-                tmpself!.sword.runAction(scaleAction)
+                tmpself!.sword.run(scaleAction)
                 
                 //剣を作成する
                 let optrandtype = randomSwordType()
@@ -626,12 +633,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 positionx = positionx + CGFloat(appendx)
                 let position = CGPoint(x: positionx, y: tmpself!.sword.position.y - 20)
-                let optsword = swordFactory.create(optrandtype, position: position, startPoint: tmpself!.touchStartPoint)
-                optsword!.makeSword(player.swordPower, charge: player.swordCharge)
+                let optsword = swordFactory.create(type: optrandtype, position: position, startPoint: tmpself!.touchStartPoint)
+                optsword!.makeSword(attack: player.swordPower, charge: player.swordCharge)
                 tmpself!.optionSwords.append(optsword!)
             })
-            let repeatSwordAction = SKAction.repeatActionForever(SKAction.sequence([waitAction,custumAction]))
-            sword.runAction(repeatSwordAction)
+            let repeatSwordAction = SKAction.repeatForever(SKAction.sequence([waitAction,custumAction]))
+            sword.run(repeatSwordAction)
             
             //マルチタッチには対応しない
             break
@@ -639,16 +646,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //スワイプした時に呼び出される
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         //タッチが開始されていないのなら即リターン
         if touchStartPoint == nil {
             return
         }
         for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
-            sword.swipeSword(location)
+            let location = touch.location(in: self)
+            sword.swipeSword(swipepoint: location)
             for optsword: SMSwordNode in optionSwords {
-                optsword.swipeSword(location)
+                optsword.swipeSword(swipepoint: location)
             }
             //マルチタッチには対応しない
             break
@@ -656,36 +663,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //タッチして指を離したときに呼び出される
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         //タッチが開始されていないのなら即リターン
         if touchStartPoint == nil {
             return
         }
-        for touch: AnyObject in touches {
+        for _: AnyObject in touches {
             //let location = touch.locationInNode(self)
-            bgNode.runAction(fadeSound)
+            bgNode.run(fadeSound)
             switch sword.type {
             case .EXCALIBUR:
-                bgNode.runAction(kuraeSound)
-                bgNode.runAction(kuraeSound)
-                bgNode.runAction(kuraeSound)
+                bgNode.run(kuraeSound)
+                bgNode.run(kuraeSound)
+                bgNode.run(kuraeSound)
             case .KATANA:
-                bgNode.runAction(sokodaSound)
-                bgNode.runAction(sokodaSound)
-                bgNode.runAction(sokodaSound)
+                bgNode.run(sokodaSound)
+                bgNode.run(sokodaSound)
+                bgNode.run(sokodaSound)
             case .PANZERSTECHER:
-                bgNode.runAction(yaaSound)
-                bgNode.runAction(yaaSound)
-                bgNode.runAction(yaaSound)
+                bgNode.run(yaaSound)
+                bgNode.run(yaaSound)
+                bgNode.run(yaaSound)
             case .ZWEIHANDER:
-                bgNode.runAction(eiSound)
-                bgNode.runAction(eiSound)
-                bgNode.runAction(eiSound)
+                bgNode.run(eiSound)
+                bgNode.run(eiSound)
+                bgNode.run(eiSound)
             default:
                 break;
             }
             //剣を発射する
-            bgNode.runAction(sword.shotSound)
+            bgNode.run(sword.shotSound)
             sword.shotSword()
             for optsword: SMSwordNode in optionSwords {
                 optsword.shotSword()
@@ -766,7 +773,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         skView.ignoresSiblingOrder = true
         
         /* Set the scale mode to scale to fit the window */
-        scene.scaleMode = .AspectFill
+        scene.scaleMode = .aspectFill
         scene.size = skView.frame.size
         
         skView.presentScene(scene)
@@ -777,7 +784,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         stageManager.resetStage()
     }
    
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     }
     
@@ -803,11 +810,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if (contact.bodyA.categoryBitMask & enemyType == enemyType) {
                 let enemy: SMEnemyNode = contact.bodyA.node as! SMEnemyNode
                 let sword: SMSwordNode = contact.bodyB.node as! SMSwordNode
-                enemy.hitSword(sword)
+                enemy.hitSword(sword: sword)
             } else if (contact.bodyB.categoryBitMask & enemyType == enemyType) {
                 let enemy: SMEnemyNode = contact.bodyB.node as! SMEnemyNode
                 let sword: SMSwordNode = contact.bodyA.node as! SMSwordNode
-                enemy.hitSword(sword)
+                enemy.hitSword(sword: sword)
             } else if contact.bodyA.categoryBitMask & ColliderType.None == ColliderType.None ||
                 contact.bodyB.categoryBitMask & ColliderType.None == ColliderType.None {
                 //なにもしない
@@ -816,33 +823,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if contact.bodyA.categoryBitMask & itemType == itemType {
                     let item: SMItemNode = contact.bodyA.node as! SMItemNode
                     let sword: SMSwordNode = contact.bodyB.node as! SMSwordNode
-                    item.contactSword(sword)
+                    item.contactSword(sword: sword)
                 } else if contact.bodyB.categoryBitMask & itemType == itemType {
                     let item: SMItemNode = contact.bodyB.node as! SMItemNode
                     let sword: SMSwordNode = contact.bodyA.node as! SMSwordNode
-                    item.contactSword(sword)
+                    item.contactSword(sword: sword)
                 }
             } else if contact.bodyA.categoryBitMask & enegyType == enegyType ||
                 contact.bodyB.categoryBitMask & enegyType == enegyType {
                 if contact.bodyA.categoryBitMask & enegyType == enegyType {
                     let enegy: SMEnegyNode = contact.bodyA.node as! SMEnegyNode
                     let sword: SMSwordNode = contact.bodyB.node as! SMSwordNode
-                    enegy.contactSword(sword)
+                    enegy.contactSword(sword: sword)
                 } else if contact.bodyB.categoryBitMask & enegyType == enegyType {
                     let enegy: SMEnegyNode = contact.bodyB.node as! SMEnegyNode
                     let sword: SMSwordNode = contact.bodyA.node as! SMSwordNode
-                    enegy.contactSword(sword)
+                    enegy.contactSword(sword: sword)
                 }
             } else if contact.bodyA.categoryBitMask & guardType == guardType ||
                 contact.bodyB.categoryBitMask & guardType == guardType {
                 if contact.bodyA.categoryBitMask & guardType == guardType {
                     let `guard`: SMGuardNode = contact.bodyA.node as! SMGuardNode
                     let sword: SMSwordNode = contact.bodyB.node as! SMSwordNode
-                    `guard`.hitSword(sword)
+                    `guard`.hitSword(sword: sword)
                 } else if contact.bodyB.categoryBitMask & guardType == guardType {
                     let `guard`: SMGuardNode = contact.bodyB.node as! SMGuardNode
                     let sword: SMSwordNode = contact.bodyA.node as! SMSwordNode
-                    `guard`.hitSword(sword)
+                    `guard`.hitSword(sword: sword)
                 }
             }
         } else if contact.bodyA.categoryBitMask & playerType == playerType ||
@@ -865,11 +872,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //敵の弾を被弾した場合
                 var enegy: SMEnegyNode!
                 if contact.bodyA.categoryBitMask & enegyType == enegyType {
-                    enegy = contact.bodyA.node as! SMEnegyNode
+                    enegy = contact.bodyA.node as? SMEnegyNode
                 } else if contact.bodyB.categoryBitMask & enegyType == enegyType {
-                    enegy = contact.bodyB.node as! SMEnegyNode
+                    enegy = contact.bodyB.node as? SMEnegyNode
                 }
-                player.damegedEnegy(enegy)
+                player.damegedEnegy(enegy: enegy)
                 if player.hitpoint <= 0 {
                     player.deadPlayer()
                     gameover()
@@ -878,11 +885,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 contact.bodyB.categoryBitMask & itemType == itemType {
                 var item: SMItemNode!
                 if contact.bodyA.categoryBitMask & itemType == itemType {
-                    item = contact.bodyA.node as! SMItemNode
+                    item = contact.bodyA.node as? SMItemNode
                 } else if contact.bodyB.categoryBitMask & itemType == itemType {
-                    item = contact.bodyB.node as! SMItemNode
+                    item = contact.bodyB.node as? SMItemNode
                 }
-                player.contactItem(item)
+                player.contactItem(item: item)
             }
         } else if contact.bodyA.categoryBitMask & guardType2 == guardType2 ||
             contact.bodyB.categoryBitMask & guardType2 == guardType2 {
@@ -892,13 +899,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 var guard2: SMGuardNode2!
                 var enegy: SMEnegyNode!
                 if contact.bodyA.categoryBitMask & enegyType == enegyType {
-                    enegy = contact.bodyA.node as! SMEnegyNode
-                    guard2 = contact.bodyB.node as! SMGuardNode2
+                    enegy = contact.bodyA.node as? SMEnegyNode
+                    guard2 = contact.bodyB.node as? SMGuardNode2
                 } else if contact.bodyB.categoryBitMask & enegyType == enegyType {
-                    enegy = contact.bodyB.node as! SMEnegyNode
-                    guard2 = contact.bodyA.node as! SMGuardNode2
+                    enegy = contact.bodyB.node as? SMEnegyNode
+                    guard2 = contact.bodyA.node as? SMGuardNode2
                 }
-                    guard2.hitEnegy(enegy)
+                guard2.hitEnegy(enegy: enegy)
             }
         }
     }
@@ -907,9 +914,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func gameover() {
         //SNS投稿用スクショ撮影
         self.vc!.setScreenShot()
-        // iAd(バナー)の自動表示
-        //self.vc!.canDisplayBannerAds = true
-        self.vc!.adbanner.hidden = false
         
         //self.runAction(hawawaSound)
         //self.runAction(hawawaSound)
@@ -920,15 +924,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameoverflg = true
         
         //NSUserDefaultsのインスタンスを生成
-        let defaults = NSUserDefaults.standardUserDefaults()
-        var playcount = defaults.integerForKey(GameViewController.PLAYCOUNT_UDKEY)
-        playcount++
+        let defaults = UserDefaults.standard
+        var playcount = defaults.integer(forKey: GameViewController.PLAYCOUNT_UDKEY)
+        playcount += 1
         defaults.setValue(playcount, forKey: GameViewController.PLAYCOUNT_UDKEY)
         
         //ハイスコアの記録
         if totalScore > hiScore {
             //"NAME"というキーで配列namesを保存
-            defaults.setObject(totalScore, forKey:"hiScore")
+            defaults.set(totalScore, forKey:"hiScore")
         }
         // シンクロを入れないとうまく動作しないときがあります
         defaults.synchronize()
@@ -980,7 +984,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //postToFacebook()
         if !isSimulator() {
             //device
-            socialButtonTapped("facebook")
+            socialButtonTapped(social: "facebook")
         }
     }
     func isSimulator() -> Bool {
@@ -989,14 +993,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //パーティクル発生
     func makeParticle(position:CGPoint?, filename: String, hide: Bool = true) {
-        makeParticleNode(position, filename: filename, hide: hide, node: self)
+        makeParticleNode(position: position, filename: filename, hide: hide, node: self)
     }
     func makeParticleNode(position:CGPoint?, filename: String, hide: Bool = true, node: SKNode) {
-        SMNodeUtil.makeParticleNode(position, filename: filename, hide: hide, node: node)
+        SMNodeUtil.makeParticleNode(position: position, filename: filename, hide: hide, node: node)
     }
     
     //一秒後にフェードしながらノードを消す
     func fadeRemoveNode(removenode: SKNode!) {
-        SMNodeUtil.fadeRemoveNode(removenode)
+        SMNodeUtil.fadeRemoveNode(removenode: removenode)
     }
 }

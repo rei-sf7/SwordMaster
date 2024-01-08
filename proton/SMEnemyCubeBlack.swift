@@ -14,11 +14,11 @@ class SMEnemyCubeBlack: SMEnemyCube {
         self.hitpoint = 3
         self.diffence = 10
         self.score = 1000
-        self.color = UIColor.blackColor()
+        self.color = UIColor.black
         self.colorBlendFactor = 0.7
         self.itemnum = 10
     }
-    required override init(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -29,7 +29,7 @@ class SMEnemyCubeBlack: SMEnemyCube {
         let randY = arc4random_uniform(100)
         
         //プレイヤーに迫って移動してくるようにする
-        var vector = SMNodeUtil.makePlayerVector(self.position, player: player)
+        let vector = SMNodeUtil.makePlayerVector(position: self.position, player: player)
         self.physicsBody?.velocity = CGVector.zero
         self.physicsBody?.applyImpulse(CGVector(dx:(vector.dx + CGFloat(randY))/20, dy:vector.dy/20))
     }

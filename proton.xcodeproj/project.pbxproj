@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,7 +19,6 @@
 		932C916A1C37B8A600313494 /* stage4boss.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 932C91671C37B8A600313494 /* stage4boss.mp3 */; };
 		932C916B1C37B8A600313494 /* stage4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 932C91681C37B8A600313494 /* stage4.mp3 */; };
 		932C916E1C37BBC500313494 /* scrollParticle4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 932C916C1C37BBC500313494 /* scrollParticle4.sks */; };
-		932C916F1C37BBC500313494 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 932C916D1C37BBC500313494 /* spark.png */; };
 		932C91711C37BFEE00313494 /* SMEnemyBoss4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C91701C37BFEE00313494 /* SMEnemyBoss4.swift */; };
 		9334DAAD1C671E4C00272656 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9334DAAC1C671E4C00272656 /* Icon-72.png */; };
 		9334DAAE1C671E4C00272656 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9334DAAC1C671E4C00272656 /* Icon-72.png */; };
@@ -32,7 +31,6 @@
 		9349B2BD1C2253DE009930FE /* hit013.png in Resources */ = {isa = PBXBuildFile; fileRef = 9349B2BC1C2253DE009930FE /* hit013.png */; };
 		935665021B85C19500EAE798 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 935665011B85C19500EAE798 /* Social.framework */; };
 		9356C1DC1B4D00410073EBF8 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9356C1DA1B4D00410073EBF8 /* MyParticle.sks */; };
-		9356C1DD1B4D00410073EBF8 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9356C1DB1B4D00410073EBF8 /* spark.png */; };
 		9356C1DF1B4D05000073EBF8 /* ice1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9356C1DE1B4D05000073EBF8 /* ice1.png */; };
 		935D90901B6F2D680098A2FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 935D908F1B6F2D680098A2FF /* Images.xcassets */; };
 		935D90921B6F3A9B0098A2FF /* scrollParticle2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 935D90911B6F3A9B0098A2FF /* scrollParticle2.sks */; };
@@ -61,7 +59,6 @@
 		9371E6BE1BB241F700BA8F4D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9371E6BC1BB241F700BA8F4D /* Default@2x.png */; };
 		9380AB501B75E4C10052274E /* SMGuardNode2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9380AB4F1B75E4C10052274E /* SMGuardNode2.swift */; };
 		9380AB521B78DFB20052274E /* ganbarimasu_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9380AB511B78DFB20052274E /* ganbarimasu_01.mp3 */; };
-		93812BF51C2BBC0D00030E14 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9319431F1B661B690002F1BD /* iAd.framework */; };
 		93A46BF61B8AFFFE002F6127 /* ei_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93A46BE31B8AFFFE002F6127 /* ei_01.mp3 */; };
 		93A46BF71B8AFFFE002F6127 /* hawawa_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93A46BE41B8AFFFE002F6127 /* hawawa_01.mp3 */; };
 		93A46BF81B8AFFFE002F6127 /* ita_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93A46BE51B8AFFFE002F6127 /* ita_01.mp3 */; };
@@ -167,7 +164,6 @@
 		93ECCC5D1C66FA680004DE8C /* SMStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1D7A81B5345F5000EC266 /* SMStage.swift */; };
 		93ECCC5E1C66FA680004DE8C /* SMEnemyBoss2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D90931B6F4D1F0098A2FF /* SMEnemyBoss2.swift */; };
 		93ECCC5F1C66FA680004DE8C /* SMEnemyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1D7A41B523CCF000EC266 /* SMEnemyNode.swift */; };
-		93ECCC611C66FA680004DE8C /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9319431F1B661B690002F1BD /* iAd.framework */; };
 		93ECCC621C66FA680004DE8C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 935665011B85C19500EAE798 /* Social.framework */; };
 		93ECCC631C66FA680004DE8C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D1D7A21B522AB4000EC266 /* CoreMotion.framework */; };
 		93ECCC641C66FA680004DE8C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93DCA4241C40F772005E3C0E /* StoreKit.framework */; };
@@ -179,7 +175,6 @@
 		93ECCC6B1C66FA680004DE8C /* scrollParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 93E9A0711B4D549E00B44478 /* scrollParticle.sks */; };
 		93ECCC6C1C66FA680004DE8C /* tameParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 935D90991B7087E70098A2FF /* tameParticle.sks */; };
 		93ECCC6D1C66FA680004DE8C /* sokoda_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93A46BEE1B8AFFFE002F6127 /* sokoda_01.mp3 */; };
-		93ECCC6E1C66FA680004DE8C /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9356C1DB1B4D00410073EBF8 /* spark.png */; };
 		93ECCC6F1C66FA680004DE8C /* powerup_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93A46BED1B8AFFFE002F6127 /* powerup_01.mp3 */; };
 		93ECCC701C66FA680004DE8C /* torya_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93A46BEF1B8AFFFE002F6127 /* torya_01.mp3 */; };
 		93ECCC711C66FA680004DE8C /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D1D7C91B57558B000EC266 /* spark.png */; };
@@ -199,7 +194,6 @@
 		93ECCC801C66FA680004DE8C /* sword.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93E9A06B1B4D4D9300B44478 /* sword.mp3 */; };
 		93ECCC811C66FA680004DE8C /* aha_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93A46BF11B8AFFFE002F6127 /* aha_01.mp3 */; };
 		93ECCC821C66FA680004DE8C /* ganbarimasu_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9380AB511B78DFB20052274E /* ganbarimasu_01.mp3 */; };
-		93ECCC831C66FA680004DE8C /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 932C916D1C37BBC500313494 /* spark.png */; };
 		93ECCC841C66FA680004DE8C /* itemget_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93A46BE61B8AFFFE002F6127 /* itemget_01.mp3 */; };
 		93ECCC851C66FA680004DE8C /* titleParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 93D1D7C81B57558B000EC266 /* titleParticle.sks */; };
 		93ECCC861C66FA680004DE8C /* cutinParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 93D8CD481B68A9740052BE67 /* cutinParticle.sks */; };
@@ -264,14 +258,12 @@
 		931943191B58DB740002F1BD /* SMItemNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMItemNode.swift; sourceTree = "<group>"; };
 		9319431B1B5F5C790002F1BD /* ItemType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		9319431D1B5F724E0002F1BD /* SMItemFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMItemFactory.swift; sourceTree = "<group>"; };
-		9319431F1B661B690002F1BD /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		93251AFE1C54AD1200F966EA /* SMEnemyCubeGold.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMEnemyCubeGold.swift; sourceTree = "<group>"; };
 		93251B001C54B27F00F966EA /* SMEnemyCubeBlack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMEnemyCubeBlack.swift; sourceTree = "<group>"; };
 		932C91661C37B8A600313494 /* stage3boss.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stage3boss.mp3; sourceTree = "<group>"; };
 		932C91671C37B8A600313494 /* stage4boss.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stage4boss.mp3; sourceTree = "<group>"; };
 		932C91681C37B8A600313494 /* stage4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stage4.mp3; sourceTree = "<group>"; };
 		932C916C1C37BBC500313494 /* scrollParticle4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = scrollParticle4.sks; sourceTree = "<group>"; };
-		932C916D1C37BBC500313494 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		932C91701C37BFEE00313494 /* SMEnemyBoss4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMEnemyBoss4.swift; sourceTree = "<group>"; };
 		9334DAAC1C671E4C00272656 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		9334DAAF1C671E5A00272656 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
@@ -280,7 +272,6 @@
 		9349B2BC1C2253DE009930FE /* hit013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hit013.png; sourceTree = "<group>"; };
 		935665011B85C19500EAE798 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		9356C1DA1B4D00410073EBF8 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
-		9356C1DB1B4D00410073EBF8 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		9356C1DE1B4D05000073EBF8 /* ice1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ice1.png; sourceTree = "<group>"; };
 		935D908F1B6F2D680098A2FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		935D90911B6F3A9B0098A2FF /* scrollParticle2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = scrollParticle2.sks; sourceTree = "<group>"; };
@@ -392,7 +383,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93ECCC611C66FA680004DE8C /* iAd.framework in Frameworks */,
 				93ECCC621C66FA680004DE8C /* Social.framework in Frameworks */,
 				93ECCC631C66FA680004DE8C /* CoreMotion.framework in Frameworks */,
 				93ECCC641C66FA680004DE8C /* StoreKit.framework in Frameworks */,
@@ -403,7 +393,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93812BF51C2BBC0D00030E14 /* iAd.framework in Frameworks */,
 				935665021B85C19500EAE798 /* Social.framework in Frameworks */,
 				93D1D7A31B522AB4000EC266 /* CoreMotion.framework in Frameworks */,
 				93DCA4251C40F772005E3C0E /* StoreKit.framework in Frameworks */,
@@ -473,7 +462,6 @@
 				9356C1DE1B4D05000073EBF8 /* ice1.png */,
 				9349B2BC1C2253DE009930FE /* hit013.png */,
 				93D1D7C91B57558B000EC266 /* spark.png */,
-				9356C1DB1B4D00410073EBF8 /* spark.png */,
 				93D8CD461B689E840052BE67 /* swordmaster2.png */,
 			);
 			path = image;
@@ -495,7 +483,6 @@
 				935D90991B7087E70098A2FF /* tameParticle.sks */,
 				93D1D7C81B57558B000EC266 /* titleParticle.sks */,
 				932C916C1C37BBC500313494 /* scrollParticle4.sks */,
-				932C916D1C37BBC500313494 /* spark.png */,
 				93DCA4281C4399DF005E3C0E /* shopButton.sks */,
 				930BE6D01C5736BB00C6C393 /* smoke.sks */,
 				930BE6D21C57385500C6C393 /* item.sks */,
@@ -520,17 +507,16 @@
 		93EF1AA11B4BC01800B1FC93 = {
 			isa = PBXGroup;
 			children = (
-				93ECCCAE1C66FA680004DE8C /* Resources-iPad */,
-				93DCA4241C40F772005E3C0E /* StoreKit.framework */,
-				93EF1AAB1B4BC01800B1FC93 /* Products */,
-				93EF1AAC1B4BC01800B1FC93 /* proton */,
-				93EF1AC61B4BC01800B1FC93 /* protonTests */,
 				93D1D7A21B522AB4000EC266 /* CoreMotion.framework */,
 				9371E6BB1BB241F700BA8F4D /* Default-568h@2x.png */,
 				9371E6BC1BB241F700BA8F4D /* Default@2x.png */,
-				935665011B85C19500EAE798 /* Social.framework */,
-				9319431F1B661B690002F1BD /* iAd.framework */,
+				93EF1AAB1B4BC01800B1FC93 /* Products */,
+				93EF1AAC1B4BC01800B1FC93 /* proton */,
 				93ECCCAF1C66FA680004DE8C /* proton copy-Info.plist */,
+				93EF1AC61B4BC01800B1FC93 /* protonTests */,
+				93ECCCAE1C66FA680004DE8C /* Resources-iPad */,
+				935665011B85C19500EAE798 /* Social.framework */,
+				93DCA4241C40F772005E3C0E /* StoreKit.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -686,17 +672,14 @@
 		93EF1AA21B4BC01800B1FC93 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 1510;
 				ORGANIZATIONNAME = "Masaaki Kakimoto";
 				TargetAttributes = {
-					93ECCC341C66FA680004DE8C = {
-						DevelopmentTeam = M63PA5KAC8;
-					};
 					93EF1AA91B4BC01800B1FC93 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = M63PA5KAC8;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -710,8 +693,8 @@
 				};
 			};
 			buildConfigurationList = 93EF1AA51B4BC01800B1FC93 /* Build configuration list for PBXProject "proton" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -743,7 +726,6 @@
 				93ECCC6B1C66FA680004DE8C /* scrollParticle.sks in Resources */,
 				93ECCC6C1C66FA680004DE8C /* tameParticle.sks in Resources */,
 				93ECCC6D1C66FA680004DE8C /* sokoda_01.mp3 in Resources */,
-				93ECCC6E1C66FA680004DE8C /* spark.png in Resources */,
 				93ECCC6F1C66FA680004DE8C /* powerup_01.mp3 in Resources */,
 				93ECCC701C66FA680004DE8C /* torya_01.mp3 in Resources */,
 				93ECCC711C66FA680004DE8C /* spark.png in Resources */,
@@ -766,7 +748,6 @@
 				93ECCC801C66FA680004DE8C /* sword.mp3 in Resources */,
 				93ECCC811C66FA680004DE8C /* aha_01.mp3 in Resources */,
 				93ECCC821C66FA680004DE8C /* ganbarimasu_01.mp3 in Resources */,
-				93ECCC831C66FA680004DE8C /* spark.png in Resources */,
 				93ECCC841C66FA680004DE8C /* itemget_01.mp3 in Resources */,
 				93ECCC851C66FA680004DE8C /* titleParticle.sks in Resources */,
 				93ECCC861C66FA680004DE8C /* cutinParticle.sks in Resources */,
@@ -822,7 +803,6 @@
 				93E9A0721B4D549E00B44478 /* scrollParticle.sks in Resources */,
 				935D909A1B7087E70098A2FF /* tameParticle.sks in Resources */,
 				93A46C011B8AFFFE002F6127 /* sokoda_01.mp3 in Resources */,
-				9356C1DD1B4D00410073EBF8 /* spark.png in Resources */,
 				93A46C001B8AFFFE002F6127 /* powerup_01.mp3 in Resources */,
 				93A46C021B8AFFFE002F6127 /* torya_01.mp3 in Resources */,
 				93D1D7CB1B57558B000EC266 /* spark.png in Resources */,
@@ -844,7 +824,6 @@
 				93E9A06F1B4D4D9300B44478 /* sword.mp3 in Resources */,
 				93A46C041B8AFFFE002F6127 /* aha_01.mp3 in Resources */,
 				9380AB521B78DFB20052274E /* ganbarimasu_01.mp3 in Resources */,
-				932C916F1C37BBC500313494 /* spark.png in Resources */,
 				93A46BF91B8AFFFE002F6127 /* itemget_01.mp3 in Resources */,
 				93D1D7CA1B57558B000EC266 /* titleParticle.sks in Resources */,
 				93D8CD491B68A9740052BE67 /* cutinParticle.sks in Resources */,
@@ -1052,9 +1031,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "proton copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Test.proton;
 				PRODUCT_NAME = "proton-iPad";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -1068,9 +1052,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "proton copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Test.proton;
 				PRODUCT_NAME = "proton-iPad";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -1085,19 +1074,32 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1113,11 +1115,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1129,13 +1132,24 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1143,6 +1157,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1151,9 +1166,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1165,9 +1182,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "proton/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Test.proton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1181,9 +1203,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "proton/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Test.proton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1203,7 +1230,12 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "protonTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/proton.app/proton";
 			};
@@ -1218,7 +1250,12 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "protonTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/proton.app/proton";
 			};

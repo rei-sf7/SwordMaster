@@ -20,23 +20,23 @@ class SMItemFactory {
         let rand = arc4random_uniform(140)
         var ret: SMItemNode?
         if rand % 70 == 1 {
-            ret = create(ItemType.DAIYA, location: location)
+            ret = create(type: ItemType.DAIYA, location: location)
         } else if rand % 70 == 5 {
-            ret = create(ItemType.HEART, location: location)
+            ret = create(type: ItemType.HEART, location: location)
         } else if rand % 70 == 6 {
-            ret = create(ItemType.SWORDPOWERUP, location: location)
+            ret = create(type: ItemType.SWORDPOWERUP, location: location)
         } else if rand % 70 == 7 {
-            ret = create(ItemType.SWORDCHARGEUP, location: location)
+            ret = create(type: ItemType.SWORDCHARGEUP, location: location)
         } else if rand % 70 == 8 {
-            ret = create(ItemType.GOLDSHIELD, location: location)
+            ret = create(type: ItemType.GOLDSHIELD, location: location)
         } else if rand % 30 == 2 {
-            ret = create(ItemType.SWORDNUMUP, location: location)
+            ret = create(type: ItemType.SWORDNUMUP, location: location)
         } else if rand % 30 == 4 {
-            ret = create(ItemType.SHIELD, location: location)
+            ret = create(type: ItemType.SHIELD, location: location)
         } else if rand % 10 == 3 {
-            ret = create(ItemType.SPEEDUP, location: location)
+            ret = create(type: ItemType.SPEEDUP, location: location)
         } else {
-            ret = create(ItemType.COIN, location: location)
+            ret = create(type: ItemType.COIN, location: location)
         }
         return ret
     }

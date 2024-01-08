@@ -54,43 +54,43 @@ class SMStage: SMEnemyGroupDelegate {
         bgNode.removeAllChildren()
         
         //背景を描画
-        let bg = background
+        let bg: SKSpriteNode = background
         bg.position = CGPoint(x:0, y:0)
-        bg.texture?.filteringMode = SKTextureFilteringMode.Nearest
+        bg.texture?.filteringMode = SKTextureFilteringMode.nearest
         bg.anchorPoint = CGPoint(x:0.5, y:0) //中央に合わせる
         bg.zPosition = -100
         bg.alpha = 0.0
         bgNode.addChild(bg)
-        let fadein = SKAction.fadeInWithDuration(2.0)
-        bg.runAction(fadein)
+        let fadein = SKAction.fadeIn(withDuration: 2.0)
+        bg.run(fadein)
         
-        makeBgParticle(bgParticle)
+        makeBgParticle(file: bgParticle)
         
         //背景を徐々に下にスクロールする
-        let bgScrollAction = SKAction.moveToY(-60.0, duration: 10) //指定座標まで移動
-        let bgScrollRevAction = SKAction.moveToY(0, duration: 10)
-        let bgScroll = SKAction.repeatActionForever(SKAction.sequence([bgScrollAction,bgScrollRevAction]))
-        bg.runAction(bgScroll)
-        let scaleAction1 = SKAction.scaleTo(SMStage.base - 0.03, duration: 2)
-        let scaleAction2 = SKAction.scaleTo(SMStage.base, duration: 2)
-        let scaleAction3 = SKAction.scaleTo(SMStage.base + 0.03, duration: 2)
-        let scaleRepeat = SKAction.repeatActionForever(SKAction.sequence([scaleAction1,scaleAction2,scaleAction3]))
-        bg.runAction(scaleRepeat)
+        let bgScrollAction = SKAction.moveTo(y: -60.0, duration: 10) //指定座標まで移動
+        let bgScrollRevAction = SKAction.moveTo(y: 0, duration: 10)
+        let bgScroll = SKAction.repeatForever(SKAction.sequence([bgScrollAction,bgScrollRevAction]))
+        bg.run(bgScroll)
+        let scaleAction1 = SKAction.scale(to: SMStage.base - 0.03, duration: 2)
+        let scaleAction2 = SKAction.scale(to: SMStage.base, duration: 2)
+        let scaleAction3 = SKAction.scale(to: SMStage.base + 0.03, duration: 2)
+        let scaleRepeat = SKAction.repeatForever(SKAction.sequence([scaleAction1,scaleAction2,scaleAction3]))
+        bg.run(scaleRepeat)
         
         //敵の集団を作成
         makeEnemyGroup()
         
-        startBgm(self.bgSound)
+        startBgm(filename: self.bgSound)
     }
     
     func startBgm(filename: String) {
         // 再生する audio ファイルのパスを取得
-        let audioPath = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(filename, ofType: "mp3")!)
+        let audioPath = NSURL(fileURLWithPath: Bundle.main.path(forResource: filename, ofType: "mp3")!)
         
         // auido を再生するプレイヤーを作成する
         var audioError:NSError?
         do {
-            audioPlayer = try AVAudioPlayer(contentsOfURL: audioPath)
+            audioPlayer = try AVAudioPlayer(contentsOf: audioPath as URL)
         } catch let error as NSError {
             audioError = error
             audioPlayer = nil
@@ -132,7 +132,7 @@ class SMStage: SMEnemyGroupDelegate {
     
     //次の敵へ
     func nextEnemyGroup() {
-        currentEnemyGroupNum++
+        currentEnemyGroupNum += 1
     }
     
     func nextEnemyGroupDelegate() {
@@ -148,7 +148,7 @@ class SMStage: SMEnemyGroupDelegate {
     func makeBoss() {
         //BGM一旦停止
         audioPlayer!.stop()
-        startBgm(bossSound)
+        startBgm(filename: bossSound)
         bossEnemyGroup.makeEnemyGroup()
     }
     
@@ -159,27 +159,27 @@ class SMStage: SMEnemyGroupDelegate {
         audioPlayer!.stop()
         
         weak var tmpself = self
-        let custumAction = SKAction.customActionWithDuration(0.0, actionBlock: { (node: SKNode, elapsedTime: CGFloat) -> Void in
+        let custumAction = SKAction.customAction(withDuration: 0.0, actionBlock: { (node: SKNode, elapsedTime: CGFloat) -> Void in
             //今のステージの後始末
             tmpself!.destroyStage()
             
             if stageManager.currentStageNum == 4 {
                 //全4ステージ
-                stageManager.clearNum++
+                stageManager.clearNum += 1
                 stageManager.currentStageNum = 0
             }
             
             //次のステージの開始
             stageManager.nextStage()
             stageManager.makeStage()
-            player.playerStart([playerTexture,playerTexture2])
+            player.playerStart(textures: [playerTexture,playerTexture2])
             player.makeHaneAnim()
             player.makeWarpAnim()
         })
-        let wait = SKAction.waitForDuration(10.0)
-        bgNode.runAction(SKAction.sequence([wait, custumAction]))
-        let fadeout = SKAction.fadeOutWithDuration(10.0)
-        background.runAction(fadeout)
+        let wait = SKAction.wait(forDuration: 10.0)
+        bgNode.run(SKAction.sequence([wait, custumAction]))
+        let fadeout = SKAction.fadeOut(withDuration: 10.0)
+        background.run(fadeout)
     }
     
     func destroyStage() {

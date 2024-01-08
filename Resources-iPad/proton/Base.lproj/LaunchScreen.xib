@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="ipad10_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,34 +16,36 @@
                     <rect key="frame" x="-60" y="-160" width="600" height="800"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ジュエルセイバーFREE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zix-iL-7wj">
-                    <rect key="frame" x="81" y="343" width="176" height="21"/>
+                    <rect key="frame" x="81" y="343" width="178" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.98133680555555558" green="0.98133680555555558" blue="0.98133680555555558" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.98133680555555558" green="0.98133680555555558" blue="0.98133680555555558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.jewel-s.jp/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvC-9E-YuA">
                     <rect key="frame" x="128" y="367" width="221" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="221" id="F4j-l4-6hv"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="221" id="F4j-l4-6hv"/>
                         <constraint firstAttribute="height" constant="21" id="NxY-J3-Btd"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="FJG-iY-gKg" secondAttribute="centerY" id="5gJ-ym-ipA"/>
                 <constraint firstAttribute="centerX" secondItem="FJG-iY-gKg" secondAttribute="centerX" id="Jbi-iL-iyM"/>
-                <constraint firstItem="pvC-9E-YuA" firstAttribute="leading" secondItem="zix-iL-7wj" secondAttribute="leading" constant="47" id="QIs-dg-tVQ"/>
+                <constraint firstAttribute="trailing" secondItem="zix-iL-7wj" secondAttribute="trailing" constant="221" id="NNL-hg-Q0q"/>
+                <constraint firstItem="pvC-9E-YuA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zix-iL-7wj" secondAttribute="leading" id="QIs-dg-tVQ"/>
                 <constraint firstItem="pvC-9E-YuA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="128" id="W5X-WR-Jmj"/>
                 <constraint firstItem="pvC-9E-YuA" firstAttribute="top" secondItem="zix-iL-7wj" secondAttribute="bottom" constant="3" id="iJ3-gL-yr3"/>
+                <constraint firstAttribute="trailing" secondItem="pvC-9E-YuA" secondAttribute="trailing" constant="131" id="xq8-6u-c2C"/>
                 <constraint firstAttribute="bottom" secondItem="pvC-9E-YuA" secondAttribute="bottom" constant="92" id="yQo-1Z-MBB"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="548" y="455"/>
+            <point key="canvasLocation" x="547.31707317073165" y="454.57627118644069"/>
         </view>
     </objects>
     <resources>

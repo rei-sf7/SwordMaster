@@ -27,13 +27,13 @@ class SMEnemyFly: SMEnemyNode {
         self.score = 20
         self.itemnum = 2
     }
-    required override init(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func makeEnemy() {
         super.makeEnemy()
-        self.physicsBody?.dynamic = true
+        self.physicsBody?.isDynamic = true
         self.physicsBody?.restitution = 0.5
         self.physicsBody?.density = 5.0
         
@@ -41,13 +41,13 @@ class SMEnemyFly: SMEnemyNode {
         let rand2 = Double(arc4random_uniform(100)) * 0.01
         
         //ゆらゆら移動してくるようにする
-        let wait1 = SKAction.waitForDuration(rand1)
-        let action1 = SKAction.moveBy(CGVector(dx: 100, dy: 0), duration: 0.5)
-        let wait2 = SKAction.waitForDuration(rand2)
-        let action2 = SKAction.moveBy(CGVector(dx: -100, dy: 0), duration: 0.5)
+        let wait1 = SKAction.wait(forDuration: rand1)
+        let action1 = SKAction.move(by: CGVector(dx: 100, dy: 0), duration: 0.5)
+        let wait2 = SKAction.wait(forDuration: rand2)
+        let action2 = SKAction.move(by: CGVector(dx: -100, dy: 0), duration: 0.5)
         
-        self.runAction(SKAction.repeatActionForever(SKAction.sequence([wait1,action1,wait2,action2,wait2,action2,wait1,action1])))
+        self.run(SKAction.repeatForever(SKAction.sequence([wait1,action1,wait2,action2,wait2,action2,wait1,action1])))
         
-        makeEnegy(3)
+        makeEnegy(num: 3)
     }
 }

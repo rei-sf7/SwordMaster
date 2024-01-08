@@ -16,7 +16,7 @@ class SMEnemyAKnight: SMEnemyNode {
     
     init(texture: SKTexture) {
         //位置をランダムに作成する
-        var randY = arc4random_uniform(10)
+//        var randY = arc4random_uniform(10)
         let randX = arc4random_uniform(200)
         x = frameWidth/2 + 100.0 - CGFloat(randX)
         y = CGFloat(frameHeight - 120)
@@ -30,13 +30,13 @@ class SMEnemyAKnight: SMEnemyNode {
         self.score = 100
         self.itemnum = 5
     }
-    required override init(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func makeEnemy() {
         super.makeEnemy()
-        self.physicsBody?.dynamic = true
+        self.physicsBody?.isDynamic = true
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.restitution = 1.9
         self.physicsBody?.density = 2000.0
@@ -48,6 +48,6 @@ class SMEnemyAKnight: SMEnemyNode {
         
         `guard`.makeGuard()
         
-        attackPlayer(5.0)
+        attackPlayer(duration: 5.0)
     }
 }

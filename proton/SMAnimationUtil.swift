@@ -17,7 +17,7 @@ class SMAnimationUtil {
         var ret: [SKTexture] = []
         let image = UIImage(named: imageName)
         
-        let inner: CGImageRef! = image?.CGImage
+        let inner: CGImage! = image?.cgImage
         
         let xFrameInt: Int = Int(xFrame)
         let yFrameInt: Int = Int(yFrame)
@@ -43,9 +43,9 @@ class SMAnimationUtil {
                 fwidth = CGFloat(width)*scale
                 fheight = CGFloat(height)*scale
                 let rect: CGRect = CGRectMake(fx, fy, fwidth, fheight)
-                let ref: CGImage? = CGImageCreateWithImageInRect(inner, rect)
+                let ref: CGImage? = inner.cropping(to: rect)
                 //var rev: UIImage? = UIImage(CGImage: ref)
-                let texture = SKTexture(CGImage: ref!)
+                let texture = SKTexture(cgImage: ref!)
                 ret.append(texture)
             }
         }

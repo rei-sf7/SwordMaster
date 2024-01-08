@@ -55,8 +55,8 @@ class SMStageFactory {
         var bossArray: [SMEnemyNode] = [SMEnemyNode]()
         
         //最初、敵CUBEが3匹
-        for i in 0..<3 {
-            let enemy = enemyFactory.create(EnemyType.CUBE)
+        for _ in 0..<3 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBE)
             enemyArray.append(enemy!)
         }
         /*
@@ -69,57 +69,57 @@ class SMStageFactory {
         enemyGroup = SMEnemyGroup(enemys:enemyArray, type:EnemyGroupType.INTERVAL)
         
         //最初、敵CUBEが3匹
-        for i in 0..<4 {
-            let enemy = enemyFactory.create(EnemyType.CUBE)
+        for _ in 0..<4 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBE)
             enemyArray1.append(enemy!)
         }
         //全滅させるまで次に進めない
         enemyGroup1 = SMEnemyGroup(enemys:enemyArray1, type:EnemyGroupType.INTERVAL)
         
         //次５匹
-        for i in 0..<5 {
-            let enemy = enemyFactory.create(EnemyType.CUBE)
+        for _ in 0..<5 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBE)
             enemyArray2.append(enemy!)
         }
-        let gold = enemyFactory.create(EnemyType.CUBEGOLD)
+        let gold = enemyFactory.create(type: EnemyType.CUBEGOLD)
         enemyArray2.append(gold!)
-        let black = enemyFactory.create(EnemyType.CUBEBLACK)
+        let black = enemyFactory.create(type: EnemyType.CUBEBLACK)
         enemyArray2.append(black!)
         
         //全滅させるまで次に進めない
         enemyGroup2 = SMEnemyGroup(enemys:enemyArray2, type:EnemyGroupType.INTERVAL)
         
         //次8匹
-        for i in 0..<8 {
-            let enemy = enemyFactory.create(EnemyType.CUBE)
+        for _ in 0..<8 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBE)
             enemyArray3.append(enemy!)
         }
         //全滅させるまで次に進めない
         enemyGroup3 = SMEnemyGroup(enemys:enemyArray3, type:EnemyGroupType.INTERVAL)
         
         //次の敵、2匹
-        for i in 0..<2 {
-            let enemy = enemyFactory.create(EnemyType.FLY)
+        for _ in 0..<2 {
+            let enemy = enemyFactory.create(type: EnemyType.FLY)
             enemyArray4.append(enemy!)
         }
         //時間が経つと次に進む
         enemyGroup4 = SMEnemyGroup(enemys:enemyArray4, type:EnemyGroupType.INTERVAL)
         
         //次の敵、３匹
-        for i in 0..<3 {
-            let enemy = enemyFactory.create(EnemyType.FLY)
+        for _ in 0..<3 {
+            let enemy = enemyFactory.create(type: EnemyType.FLY)
             enemyArray4_1.append(enemy!)
         }
         //時間が経つと次に進む
         enemyGroup4_1 = SMEnemyGroup(enemys:enemyArray4_1, type:EnemyGroupType.INTERVAL)
         
         //次の敵
-        for i in 0..<2 {
-            let enemy = enemyFactory.create(EnemyType.FLY)
+        for _ in 0..<2 {
+            let enemy = enemyFactory.create(type: EnemyType.FLY)
             enemyArray5.append(enemy!)
         }
-        for i in 0..<3 {
-            let enemy = enemyFactory.create(EnemyType.CUBE)
+        for _ in 0..<3 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBE)
             enemyArray5.append(enemy!)
         }
         //時間が経つと次に進む
@@ -127,20 +127,20 @@ class SMStageFactory {
         enemyGroup5.interval = 13.0
         
         //次の敵
-        for i in 0..<3 {
-            let enemy = enemyFactory.create(EnemyType.FLY)
+        for _ in 0..<3 {
+            let enemy = enemyFactory.create(type: EnemyType.FLY)
             enemyArray6.append(enemy!)
         }
-        for i in 0..<5 {
-            let enemy = enemyFactory.create(EnemyType.CUBE)
+        for _ in 0..<5 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBE)
             enemyArray6.append(enemy!)
         }
         //時間が経つと次に進む
         enemyGroup6 = SMEnemyGroup(enemys:enemyArray6, type:EnemyGroupType.INTERVAL)
         enemyGroup6.interval = 15.0
         
-        for i in 0..<20 {
-            let enemy = enemyFactory.create(EnemyType.CUBE)
+        for _ in 0..<20 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBE)
             enemyArray0.append(enemy!)
         }
         enemyGroup0 = SMEnemyGroup(enemys:enemyArray0, type:EnemyGroupType.INTERVAL)
@@ -151,11 +151,11 @@ class SMStageFactory {
         }
         
         //ボス作成
-        let boss1: SMEnemyNode? = enemyFactory.create(EnemyType.BOSS1)
+        let boss1: SMEnemyNode? = enemyFactory.create(type: EnemyType.BOSS1)
         boss1?.isBoss = true
         bossArray.append(boss1!)
-        for i in 0..<5 {
-            let enemy = enemyFactory.create(EnemyType.CUBE)
+        for _ in 0..<5 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBE)
             bossArray.append(enemy!)
         }
         bossGroup = SMEnemyGroup(enemys:bossArray, type:EnemyGroupType.BOSS)
@@ -189,15 +189,15 @@ class SMStageFactory {
         var bossArray: [SMEnemyNode] = [SMEnemyNode]()
         
         //最初、敵CUBEが20匹
-        for i in 0..<20 {
-            let enemy = enemyFactory.create(EnemyType.CUBE2)
+        for _ in 0..<20 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBE2)
             enemyArray0.append(enemy!)
         }
         enemyGroup0 = SMEnemyGroup(enemys:enemyArray0, type:EnemyGroupType.INTERVAL)
         
         //最初、敵CUBEが5匹
-        for i in 0..<5 {
-            let enemy = enemyFactory.create(EnemyType.CUBEBLACK)
+        for _ in 0..<5 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBEBLACK)
             enemyArray.append(enemy!)
         }
         
@@ -206,26 +206,26 @@ class SMStageFactory {
         
         
         //最初、敵CUBEが3匹
-        for i in 0..<8 {
-            let enemy = enemyFactory.create(EnemyType.CUBE2)
+        for _ in 0..<8 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBE2)
             enemyArray1.append(enemy!)
         }
         //全滅させるまで次に進めない
         enemyGroup1 = SMEnemyGroup(enemys:enemyArray1, type:EnemyGroupType.INTERVAL)
         
         //次５匹
-        for i in 0..<5 {
-            let enemy = enemyFactory.create(EnemyType.FLY)
+        for _ in 0..<5 {
+            let enemy = enemyFactory.create(type: EnemyType.FLY)
             enemyArray2.append(enemy!)
         }
-        let gold = enemyFactory.create(EnemyType.CUBEGOLD)
+        let gold = enemyFactory.create(type: EnemyType.CUBEGOLD)
         enemyArray2.append(gold!)
         //全滅させるまで次に進めない
         enemyGroup2 = SMEnemyGroup(enemys:enemyArray2, type:EnemyGroupType.INTERVAL)
         
         //次8匹
-        for i in 0..<8 {
-            let enemy = enemyFactory.create(EnemyType.FLY)
+        for _ in 0..<8 {
+            let enemy = enemyFactory.create(type: EnemyType.FLY)
             enemyArray3.append(enemy!)
         }
         //全滅させるまで次に進めない
@@ -233,8 +233,8 @@ class SMStageFactory {
         enemyGroup3.interval = 15.0
         
         //次の敵、2匹
-        for i in 0..<2 {
-            let enemy = enemyFactory.create(EnemyType.KNIGHT)
+        for _ in 0..<2 {
+            let enemy = enemyFactory.create(type: EnemyType.KNIGHT)
             enemyArray4.append(enemy!)
         }
         //時間が経つと次に進む
@@ -242,28 +242,28 @@ class SMStageFactory {
         enemyGroup4.interval = 15.0
         
         //次の敵、３匹
-        for i in 0..<3 {
-            let enemy = enemyFactory.create(EnemyType.LION)
+        for _ in 0..<3 {
+            let enemy = enemyFactory.create(type: EnemyType.LION)
             enemyArray4_1.append(enemy!)
         }
         //時間が経つと次に進む
         enemyGroup4_1 = SMEnemyGroup(enemys:enemyArray4_1, type:EnemyGroupType.ALLDEAD)
         
         //次の敵
-        for i in 0..<1 {
-            let enemy = enemyFactory.create(EnemyType.AKNIGHT)
+        for _ in 0..<1 {
+            let enemy = enemyFactory.create(type: EnemyType.AKNIGHT)
             enemyArray5.append(enemy!)
         }
         //時間が経つと次に進む
         enemyGroup5 = SMEnemyGroup(enemys:enemyArray5, type:EnemyGroupType.ALLDEAD)
         
         //次の敵
-        for i in 0..<3 {
-            let enemy = enemyFactory.create(EnemyType.KNIGHT)
+        for _ in 0..<3 {
+            let enemy = enemyFactory.create(type: EnemyType.KNIGHT)
             enemyArray6.append(enemy!)
         }
-        for i in 0..<5 {
-            let enemy = enemyFactory.create(EnemyType.CUBE2)
+        for _ in 0..<5 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBE2)
             enemyArray6.append(enemy!)
         }
         //時間が経つと次に進む
@@ -276,11 +276,11 @@ class SMStageFactory {
             enemyGroups = [enemyGroup]
         }
         //ボス作成
-        let boss1: SMEnemyNode? = enemyFactory.create(EnemyType.BOSS2)
+        let boss1: SMEnemyNode? = enemyFactory.create(type: EnemyType.BOSS2)
         boss1?.isBoss = true
         bossArray.append(boss1!)
-        for i in 0..<2 {
-            let enemy = enemyFactory.create(EnemyType.LION)
+        for _ in 0..<2 {
+            let enemy = enemyFactory.create(type: EnemyType.LION)
             bossArray.append(enemy!)
         }
         bossGroup = SMEnemyGroup(enemys:bossArray, type:EnemyGroupType.BOSS)
@@ -313,49 +313,49 @@ class SMStageFactory {
         var bossGroup: SMEnemyGroup!
         var bossArray: [SMEnemyNode] = [SMEnemyNode]()
         
-        for i in 0..<20 {
-            let enemy = enemyFactory.create(EnemyType.CUBE2)
+        for _ in 0..<20 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBE2)
             enemyArray0.append(enemy!)
         }
         enemyGroup0 = SMEnemyGroup(enemys:enemyArray0, type:EnemyGroupType.INTERVAL)
         
         //最初、敵CUBEが5匹
-        for i in 0..<10 {
-            let enemy = enemyFactory.create(EnemyType.CUBEBLACK)
+        for _ in 0..<10 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBEBLACK)
             enemyArray.append(enemy!)
         }
         enemyGroup = SMEnemyGroup(enemys:enemyArray, type:EnemyGroupType.INTERVAL)
         enemyGroup.interval = 13.0
         
         //ライオン
-        for i in 0..<5 {
-            let enemy = enemyFactory.create(EnemyType.LION)
+        for _ in 0..<5 {
+            let enemy = enemyFactory.create(type: EnemyType.LION)
             enemyArray1.append(enemy!)
         }
         enemyGroup1 = SMEnemyGroup(enemys:enemyArray1, type:EnemyGroupType.ALLDEAD)
         enemyGroup1.interval = 13.0
         
         //次５匹
-        for i in 0..<8 {
-            let enemy = enemyFactory.create(EnemyType.CUBEBLACK)
+        for _ in 0..<8 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBEBLACK)
             enemyArray2.append(enemy!)
         }
-        let gold = enemyFactory.create(EnemyType.CUBEGOLD)
+        let gold = enemyFactory.create(type: EnemyType.CUBEGOLD)
         enemyArray2.append(gold!)
         enemyGroup2 = SMEnemyGroup(enemys:enemyArray2, type:EnemyGroupType.INTERVAL)
         enemyGroup2.interval = 13.0
         
         //次8匹
-        for i in 0..<15 {
-            let enemy = enemyFactory.create(EnemyType.FLY)
+        for _ in 0..<15 {
+            let enemy = enemyFactory.create(type: EnemyType.FLY)
             enemyArray3.append(enemy!)
         }
         enemyGroup3 = SMEnemyGroup(enemys:enemyArray3, type:EnemyGroupType.INTERVAL)
         enemyGroup3.interval = 15.0
         
         //次の敵、2匹
-        for i in 0..<6 {
-            let enemy = enemyFactory.create(EnemyType.KNIGHT)
+        for _ in 0..<6 {
+            let enemy = enemyFactory.create(type: EnemyType.KNIGHT)
             enemyArray4.append(enemy!)
         }
         //時間が経つと次に進む
@@ -363,8 +363,8 @@ class SMStageFactory {
         enemyGroup4.interval = 15.0
         
         //次の敵、３匹
-        for i in 0..<6 {
-            let enemy = enemyFactory.create(EnemyType.LION)
+        for _ in 0..<6 {
+            let enemy = enemyFactory.create(type: EnemyType.LION)
             enemyArray4_1.append(enemy!)
         }
         //時間が経つと次に進む
@@ -372,24 +372,24 @@ class SMStageFactory {
         enemyGroup4_1.interval = 20.0
         
         //次の敵
-        for i in 0..<3 {
-            let enemy = enemyFactory.create(EnemyType.AKNIGHT)
+        for _ in 0..<3 {
+            let enemy = enemyFactory.create(type: EnemyType.AKNIGHT)
             enemyArray5.append(enemy!)
         }
-        for i in 0..<3 {
-            let enemy = enemyFactory.create(EnemyType.LION)
+        for _ in 0..<3 {
+            let enemy = enemyFactory.create(type: EnemyType.LION)
             enemyArray5.append(enemy!)
         }
         enemyGroup5 = SMEnemyGroup(enemys:enemyArray5, type:EnemyGroupType.ALLDEAD)
         enemyGroup5.interval = 20.0
         
         //次の敵
-        for i in 0..<8 {
-            let enemy = enemyFactory.create(EnemyType.KNIGHT)
+        for _ in 0..<8 {
+            let enemy = enemyFactory.create(type: EnemyType.KNIGHT)
             enemyArray6.append(enemy!)
         }
-        for i in 0..<10 {
-            let enemy = enemyFactory.create(EnemyType.CUBE2)
+        for _ in 0..<10 {
+            let enemy = enemyFactory.create(type: EnemyType.CUBE2)
             enemyArray6.append(enemy!)
         }
         //時間が経つと次に進む
@@ -403,11 +403,11 @@ class SMStageFactory {
         }
         
         //ボス作成
-        let boss1: SMEnemyNode? = enemyFactory.create(EnemyType.BOSS3)
+        let boss1: SMEnemyNode? = enemyFactory.create(type: EnemyType.BOSS3)
         boss1?.isBoss = true
         bossArray.append(boss1!)
-        for i in 0..<2 {
-            let enemy = enemyFactory.create(EnemyType.AKNIGHT)
+        for _ in 0..<2 {
+            let enemy = enemyFactory.create(type: EnemyType.AKNIGHT)
             bossArray.append(enemy!)
         }
         bossGroup = SMEnemyGroup(enemys:bossArray, type:EnemyGroupType.BOSS)
@@ -428,27 +428,27 @@ class SMStageFactory {
         var bossGroup: SMEnemyGroup!
         var bossArray: [SMEnemyNode] = [SMEnemyNode]()
         
-        for i in 0..<2 {
-            let enemy = enemyFactory.create(EnemyType.LION)
+        for _ in 0..<2 {
+            let enemy = enemyFactory.create(type: EnemyType.LION)
             enemyArray1.append(enemy!)
         }
-        var bosst = enemyFactory.create(EnemyType.BOSS1)
+        var bosst = enemyFactory.create(type: EnemyType.BOSS1)
         enemyArray1.append(bosst!)
         enemyGroup1 = SMEnemyGroup(enemys:enemyArray1, type:EnemyGroupType.ALLDEAD)
         
-        for i in 0..<4 {
-            let enemy = enemyFactory.create(EnemyType.LION)
+        for _ in 0..<4 {
+            let enemy = enemyFactory.create(type: EnemyType.LION)
             enemyArray2.append(enemy!)
         }
-        bosst = enemyFactory.create(EnemyType.BOSS2)
+        bosst = enemyFactory.create(type: EnemyType.BOSS2)
         enemyArray2.append(bosst!)
         enemyGroup2 = SMEnemyGroup(enemys:enemyArray2, type:EnemyGroupType.ALLDEAD)
         
-        for i in 0..<4 {
-            let enemy = enemyFactory.create(EnemyType.AKNIGHT)
+        for _ in 0..<4 {
+            let enemy = enemyFactory.create(type: EnemyType.AKNIGHT)
             enemyArray3.append(enemy!)
         }
-        bosst = enemyFactory.create(EnemyType.BOSS3)
+        bosst = enemyFactory.create(type: EnemyType.BOSS3)
         enemyArray3.append(bosst!)
         enemyGroup3 = SMEnemyGroup(enemys:enemyArray3, type:EnemyGroupType.ALLDEAD)
         
@@ -460,15 +460,15 @@ class SMStageFactory {
         }
         
         //ボス作成
-        let boss1: SMEnemyNode? = enemyFactory.create(EnemyType.BOSS4)
+        let boss1: SMEnemyNode? = enemyFactory.create(type: EnemyType.BOSS4)
         boss1?.isBoss = true
         bossArray.append(boss1!)
-        for i in 0..<2 {
-            let enemy = enemyFactory.create(EnemyType.AKNIGHT)
+        for _ in 0..<2 {
+            let enemy = enemyFactory.create(type: EnemyType.AKNIGHT)
             bossArray.append(enemy!)
         }
-        for i in 0..<2 {
-            let enemy = enemyFactory.create(EnemyType.LION)
+        for _ in 0..<2 {
+            let enemy = enemyFactory.create(type: EnemyType.LION)
             bossArray.append(enemy!)
         }
         bossGroup = SMEnemyGroup(enemys:bossArray, type:EnemyGroupType.BOSS)

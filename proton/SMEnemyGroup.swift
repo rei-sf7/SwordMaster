@@ -32,31 +32,31 @@ class SMEnemyGroup: SMEnemyDelegate {
         }
         if self.type == EnemyGroupType.INTERVAL {
             weak var tmpself = self
-            let custumAction = SKAction.customActionWithDuration(0.0, actionBlock: { (node: SKNode, elapsedTime: CGFloat) -> Void in
+            let custumAction = SKAction.customAction(withDuration: 0.0, actionBlock: { (node: SKNode, elapsedTime: CGFloat) -> Void in
                 //指定秒後に次のグループへ
                 for enemy in tmpself!.enemys {
-                    SMNodeUtil.fadeRemoveNode(enemy)
+                    SMNodeUtil.fadeRemoveNode(removenode: enemy)
                 }
                 tmpself!.enemys.removeAll() //配列から全削除
                 tmpself!.delegate?.nextEnemyGroupDelegate()
             })
-            let waitAction = SKAction.waitForDuration(interval)
-            enemysNode.runAction(SKAction.sequence([waitAction,custumAction]))
+            let waitAction = SKAction.wait(forDuration: interval)
+            enemysNode.run(SKAction.sequence([waitAction,custumAction]))
         }
     }
     
     //敵が死んだときに呼び出される
     func enemyDeadDelegate(enemy: SMEnemyNode) {
         //println("enemyDeadDelegate")
-        killcount++
+        killcount += 1
         if killcount >= enemys.count {
-            bgNode.scene!.runAction(choroiSound)
-            bgNode.scene!.runAction(choroiSound)
-            bgNode.scene!.runAction(choroiSound)
+            bgNode.scene!.run(choroiSound)
+            bgNode.scene!.run(choroiSound)
+            bgNode.scene!.run(choroiSound)
         }
         if enemy.isBoss {
             for tmpenemy in enemys {
-                SMNodeUtil.fadeRemoveNode(tmpenemy)
+                SMNodeUtil.fadeRemoveNode(removenode: tmpenemy)
             }
             enemys.removeAll() //配列から全削除
             //ボスを倒したのなら、次のステージに進む

@@ -19,7 +19,7 @@ class SMItemNode: SKSpriteNode {
         super.init(texture: texture, color:color, size:texture.size())
         self.position = CGPoint(x:location.x, y:location.y - 40)
     }
-    required override init(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     func makeItem() {
@@ -32,7 +32,7 @@ class SMItemNode: SKSpriteNode {
             self.physicsBody = SKPhysicsBody(rectangleOfSize: self.texture!.size())
         }*/
         self.physicsBody = SKPhysicsBody(circleOfRadius: 20)
-        self.physicsBody?.dynamic = true
+        self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.restitution = 0.5
         self.physicsBody?.density = 100.0
@@ -43,13 +43,13 @@ class SMItemNode: SKSpriteNode {
         //色をつける
         switch type {
         case .SWORDPOWERUP:
-            self.color = UIColor.redColor()
+            self.color = UIColor.red
             self.colorBlendFactor = 0.5
         case .SWORDCHARGEUP:
-            self.color = UIColor.blueColor()
+            self.color = UIColor.blue
             self.colorBlendFactor = 0.7
         case .GOLDSHIELD:
-            self.color = UIColor.yellowColor()
+            self.color = UIColor.yellow
             self.colorBlendFactor = 0.5
         default:
             break
@@ -60,24 +60,24 @@ class SMItemNode: SKSpriteNode {
         }
         //フェードインする
         self.alpha = 0.0
-        let fadeIn = SKAction.fadeInWithDuration(0.5)
-        self.runAction(fadeIn)
+        let fadeIn = SKAction.fadeIn(withDuration: 0.5)
+        self.run(fadeIn)
         
-        let scale0 = SKAction.scaleTo(0, duration: 0)
-        let scale = SKAction.scaleTo(1.0, duration: 0.5)
-        self.runAction(SKAction.sequence([scale0,scale]))
+        let scale0 = SKAction.scale(to: 0, duration: 0)
+        let scale = SKAction.scale(to: 1.0, duration: 0.5)
+        self.run(SKAction.sequence([scale0,scale]))
         
         //プレイヤーに迫って移動してくるようにする
         let randY = arc4random_uniform(100)
-        let vector = SMNodeUtil.makePlayerVector(self.position, player: player)
+        let vector = SMNodeUtil.makePlayerVector(position: self.position, player: player)
         self.physicsBody?.velocity = CGVector.zero
         self.physicsBody?.applyImpulse(CGVector(dx:(vector.dx + CGFloat(randY))/10, dy:(vector.dy + CGFloat(randY))/3))
         
-        SMNodeUtil.makeParticleNode(CGPoint(x: 0.0, y: 0.0), filename: "item.sks", hide: true, node: self)
+        SMNodeUtil.makeParticleNode(position: CGPoint(x: 0.0, y: 0.0), filename: "item.sks", hide: true, node: self)
     }
     //剣と衝突したときの処理
     func contactSword(sword: SMSwordNode) {
-        let vector = SMNodeUtil.makePlayerVector(self.position, player: player)
+        let vector = SMNodeUtil.makePlayerVector(position: self.position, player: player)
         self.physicsBody?.velocity = CGVector.zero
         self.physicsBody?.applyImpulse(CGVector(dx: vector.dx/20, dy:vector.dy/20))
         //SMNodeUtil.makeParticleNode(self.position, filename: "MyParticle.sks", node: parentnode)

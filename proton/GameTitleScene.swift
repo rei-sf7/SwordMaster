@@ -9,7 +9,6 @@
 import Foundation
 import SpriteKit
 import AVFoundation
-import iAd
 
 class GameTitleScene: SKScene {
     var vc: GameViewController? = nil
@@ -26,11 +25,11 @@ class GameTitleScene: SKScene {
     //var openingSound = SKAction.playSoundFileNamed("short_song_minami_kirakira.mp3", waitForCompletion: false)
     
     //画面の初期化処理
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         
         //音楽再生
         //self.runAction(openingSound)
-        startBgm("short_song_minami_kirakira")
+        startBgm(filename: "short_song_minami_kirakira")
         
         //背景管理用ノード
         bgNode.position = CGPoint(x:0, y:0)
@@ -44,17 +43,17 @@ class GameTitleScene: SKScene {
         title.zPosition = 1
         bgNode.addChild(title)
         
-        let scaleAction = SKAction.scaleBy(1.2, duration: 0.8)
-        title.runAction(scaleAction)
-        let fadeinAction = SKAction.fadeInWithDuration(0.5)
-        title.runAction(fadeinAction)
+        let scaleAction = SKAction.scale(by: 1.2, duration: 0.8)
+        title.run(scaleAction)
+        let fadeinAction = SKAction.fadeIn(withDuration: 0.5)
+        title.run(fadeinAction)
         
         //NSUserDefaultsのインスタンスを生成
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         //前回の保存内容があるかどうかを判定
-        if((defaults.objectForKey("hiScore")) != nil){
+        if((defaults.object(forKey: "hiScore")) != nil){
             //objectsを配列として確定させ、前回の保存内容を格納
-            hiScore = defaults.objectForKey("hiScore") as! Int
+            hiScore = defaults.object(forKey: "hiScore") as! Int
         }
         
         hiScoreLabel.text = "High Score: \(hiScore)"
@@ -76,10 +75,10 @@ class GameTitleScene: SKScene {
         logo.alpha = 0.0
         logo.color = UIColor(red: 1.0, green: 0.7, blue: 0.7, alpha: 0.8)
         logo.colorBlendFactor = 0.7
-        logo.blendMode =  SKBlendMode.Add
-        let fadeinAction2 = SKAction.fadeInWithDuration(2.0)
+        logo.blendMode =  SKBlendMode.add
+        let fadeinAction2 = SKAction.fadeIn(withDuration: 2.0)
         bgNode.addChild(logo)
-        logo.runAction(fadeinAction2)
+        logo.run(fadeinAction2)
         
         //ロゴ2
         logoSize = logoTexture2.size()
@@ -91,10 +90,10 @@ class GameTitleScene: SKScene {
         logo2.alpha = 0.0
         logo2.color = UIColor(red: 0.9, green: 0.7, blue: 1.0, alpha: 0.8)
         logo2.colorBlendFactor = 0.7
-        logo2.blendMode =  SKBlendMode.Add
-        let fadeinAction3 = SKAction.fadeInWithDuration(3.5)
+        logo2.blendMode =  SKBlendMode.add
+        let fadeinAction3 = SKAction.fadeIn(withDuration: 3.5)
         bgNode.addChild(logo2)
-        logo2.runAction(fadeinAction3)
+        logo2.run(fadeinAction3)
         
         //スタートボタン
         let start = SKSpriteNode(imageNamed: "start", normalMapped: true)
@@ -103,9 +102,9 @@ class GameTitleScene: SKScene {
         start.zPosition = 120
         start.alpha = 0.9
         bgNode.addChild(start)
-        let fadeoutAction = SKAction.fadeOutWithDuration(0.5)
-        let waitAction = SKAction.waitForDuration(0.5)
-        start.runAction(SKAction.repeatActionForever(SKAction.sequence([fadeinAction,waitAction, fadeoutAction])))
+        let fadeoutAction = SKAction.fadeOut(withDuration: 0.5)
+        let waitAction = SKAction.wait(forDuration: 0.5)
+        start.run(SKAction.repeatForever(SKAction.sequence([fadeinAction,waitAction, fadeoutAction])))
         
         //ショップボタン
         let cart = SKSpriteNode(imageNamed: "cart", normalMapped: true)
@@ -114,7 +113,7 @@ class GameTitleScene: SKScene {
         cart.zPosition = 130
         cart.alpha = 0.9
         bgNode.addChild(cart)
-        cart.runAction(SKAction.repeatActionForever(SKAction.sequence([fadeinAction,waitAction, fadeoutAction])))
+        cart.run(SKAction.repeatForever(SKAction.sequence([fadeinAction,waitAction, fadeoutAction])))
         
         //ショップパーティクル
         let particlet = SKEmitterNode(fileNamed: "shopButton.sks")
@@ -139,19 +138,30 @@ class GameTitleScene: SKScene {
         bgNode.addChild(particle!)
         
         //剣をクルクルまわす
-        var swordTextures = [swordFactory.swordTexture1, swordFactory.swordTexture2, swordFactory.swordTexture3, swordFactory.swordTexture4, swordFactory.swordTexture5, swordFactory.swordTexture6, swordFactory.swordTexture7, swordFactory.swordTexture8, swordFactory.swordTexture9, swordFactory.swordTexture10]
+        let swordTextures = [
+            swordFactory.swordTexture1,
+            swordFactory.swordTexture2,
+            swordFactory.swordTexture3,
+            swordFactory.swordTexture4,
+            swordFactory.swordTexture5,
+            swordFactory.swordTexture6,
+            swordFactory.swordTexture7,
+            swordFactory.swordTexture8,
+            swordFactory.swordTexture9,
+            swordFactory.swordTexture10
+        ]
         var sword1: SKSpriteNode? = nil
         //円を描く
-        var path =  CGPathCreateMutable()
-        CGPathAddArc(path, nil, CGFloat(0), CGFloat(0), CGFloat(150.0), CGFloat(0), CGFloat(M_PI * 2), true)
-        CGPathCloseSubpath(path)
-        let circleAction = SKAction.followPath(path, asOffset: true, orientToPath: false, duration: 3)
-        let resetMoveAction = SKAction.moveTo(CGPoint(x:self.frame.width/2,y:self.frame.height/2), duration: 0)
-        let repeatAction = SKAction.repeatActionForever(SKAction.sequence([  circleAction,resetMoveAction]))
+        let path =  CGMutablePath()
+        path.addArc(center: .zero, radius: 150.0, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
+        path.closeSubpath()
+        let circleAction = SKAction.follow(path, asOffset: true, orientToPath: false, duration: 3)
+        let resetMoveAction = SKAction.move(to: CGPoint(x:self.frame.width/2,y:self.frame.height/2), duration: 0)
+        let repeatAction = SKAction.repeatForever(SKAction.sequence([  circleAction,resetMoveAction]))
         var swordi = 0
         
         for swordTexture in swordTextures {
-            var sword = SKSpriteNode(texture: swordTexture)
+            let sword = SKSpriteNode(texture: swordTexture)
             if sword1 == nil {
                 sword1 = sword
             }
@@ -159,9 +169,9 @@ class GameTitleScene: SKScene {
             sword.zPosition = 10
             bgNode.addChild(sword)
             
-            let waitAction2 = SKAction.waitForDuration(0.30 * Double(swordi))
-            sword.runAction(SKAction.sequence([waitAction2, repeatAction]))
-            swordi++
+            let waitAction2 = SKAction.wait(forDuration: 0.30 * Double(swordi))
+            sword.run(SKAction.sequence([waitAction2, repeatAction]))
+            swordi += 1
         }
         
         //光の演出(iOS8以上のみ)
@@ -169,7 +179,7 @@ class GameTitleScene: SKScene {
             let light:SKLightNode = SKLightNode()
             light.categoryBitMask = 1
             light.falloff = 1
-            light.ambientColor = UIColor.whiteColor()
+            light.ambientColor = UIColor.white
             light.lightColor = UIColor(red: 1.0, green: 0.9, blue: 0.9, alpha: 0.9)
             light.shadowColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.5)
             sword1!.addChild(light)
@@ -191,10 +201,10 @@ class GameTitleScene: SKScene {
         
     }
     //タッチした時に呼び出される
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
-            let touchPoint = touch.locationInNode(self)
-            let node: SKNode! =  self.nodeAtPoint(touchPoint)
+            let touchPoint = touch.location(in: self)
+            let node: SKNode! =  self.atPoint(touchPoint)
             if let tmpnode = node {
                 if tmpnode.name == "start" {
                     //ゲーム開始
@@ -214,12 +224,12 @@ class GameTitleScene: SKScene {
     }
     func startBgm(filename: String) {
         // 再生する audio ファイルのパスを取得
-        let audioPath = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(filename, ofType: "mp3")!)
+        let audioPath = NSURL(fileURLWithPath: Bundle.main.path(forResource: filename, ofType: "mp3")!)
         
         // auido を再生するプレイヤーを作成する
         var audioError:NSError?
         do {
-            audioPlayer = try AVAudioPlayer(contentsOfURL: audioPath)
+            audioPlayer = try AVAudioPlayer(contentsOf: audioPath as URL)
         } catch let error as NSError {
             audioError = error
             audioPlayer = nil
@@ -256,17 +266,11 @@ class GameTitleScene: SKScene {
         skView.ignoresSiblingOrder = true
         
         /* Set the scale mode to scale to fit the window */
-        scene.scaleMode = .AspectFill
+        scene.scaleMode = .aspectFill
         scene.size = skView.frame.size
         
-        let transition = SKTransition.crossFadeWithDuration(2)
+        let transition = SKTransition.crossFade(withDuration: 2)
         skView.presentScene(scene, transition:transition)
-        
-        //スタートの効果音流す
-        
-        // iAd(バナー)の非表示
-        //self.vc!.canDisplayBannerAds = false
-        self.vc!.adbanner.hidden = true
     }
     //店画面を表示する
     func showshop() {
@@ -281,11 +285,11 @@ class GameTitleScene: SKScene {
         skView.ignoresSiblingOrder = true
         
         /* Set the scale mode to scale to fit the window */
-        scene.scaleMode = .AspectFill
+        scene.scaleMode = .aspectFill
         scene.size = skView.frame.size
         
         //let transition = SKTransition.crossFadeWithDuration(2)
-        let transition = SKTransition.fadeWithDuration(1)
+        let transition = SKTransition.fade(withDuration: 1)
         skView.presentScene(scene, transition:transition)
     }
 }

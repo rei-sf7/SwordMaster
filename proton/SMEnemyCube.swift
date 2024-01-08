@@ -25,7 +25,7 @@ class SMEnemyCube: SMEnemyNode {
         self.diffence = 0
         self.score = 10
     }
-    required override init(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -35,7 +35,7 @@ class SMEnemyCube: SMEnemyNode {
         let randY = arc4random_uniform(100)
         
         //プレイヤーに迫って移動してくるようにする
-        var vector = SMNodeUtil.makePlayerVector(self.position, player: player)
+//        var vector = SMNodeUtil.makePlayerVector(position: self.position, player: player)
         self.physicsBody?.density = 0.1
         self.physicsBody?.restitution = 0.3
         //self.physicsBody?.velocity = CGVector.zero
@@ -44,10 +44,10 @@ class SMEnemyCube: SMEnemyNode {
         hit.alpha = 0.7
         
         //回転のアニメーションをランダム時間で付ける
-        let rotateAction = SKAction.rotateByAngle(CGFloat(360*M_PI/180), duration: 0.5)
-        let rotateWaitAction = SKAction.waitForDuration(NSTimeInterval(CGFloat(randY) * 0.05))
-        let rotate = SKAction.repeatActionForever(SKAction.sequence([rotateAction,rotateWaitAction]))
-        self.runAction(rotate)
+        let rotateAction = SKAction.rotate(byAngle: CGFloat(360 * Double.pi/180), duration: 0.5)
+        let rotateWaitAction = SKAction.wait(forDuration: (CGFloat(randY) * 0.05))
+        let rotate = SKAction.repeatForever(SKAction.sequence([rotateAction,rotateWaitAction]))
+        self.run(rotate)
         
         //ずっとプレイヤーの方向を向くようにする
         // 姿勢へのConstraintsを作成.

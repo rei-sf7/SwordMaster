@@ -29,7 +29,7 @@ class SMStageManage {
             }
         }
         //ステージ情報のインスタンスを作成
-        currentStage = stageFactory.create(currentStageNum)
+        currentStage = stageFactory.create(stageNumber: currentStageNum)
         
         if let stage = currentStage {
             stage.makeStage()
@@ -39,7 +39,7 @@ class SMStageManage {
     //次のステージに進める
     func nextStage() {
         //currentStage = nil
-        currentStageNum++
+        currentStageNum += 1
     }
     
     //最初のステージに戻る

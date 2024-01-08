@@ -27,7 +27,7 @@ class SMEnemyBoss1: SMEnemyNode {
         self.score = 2000
         self.itemnum = 10
     }
-    required override init(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -43,10 +43,10 @@ class SMEnemyBoss1: SMEnemyNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.restitution = 0.1
         self.physicsBody?.density = 1000.0
-        makeEnegy(15)
+        makeEnegy(num: 15)
         makeEnegy2()
-        let move = SKAction.moveToY(frameHeight - 100, duration: 3.0)
-        self.runAction(move)
+        let move = SKAction.moveTo(y: frameHeight - 100, duration: 3.0)
+        self.run(move)
         
         self.moveXToPlayer()
         
@@ -57,6 +57,6 @@ class SMEnemyBoss1: SMEnemyNode {
         `guard` = SMGuardNode(texture: guardTexture, location: guardpos, parentnode: self)
         `guard`.makeGuard()
         
-        attackPlayer(20.0)
+        attackPlayer(duration: 20.0)
     }
 }
